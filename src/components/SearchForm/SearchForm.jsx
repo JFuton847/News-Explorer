@@ -10,13 +10,16 @@ function SearchForm({ onSearch }) {
   };
 
   return (
-    <input
-      type="text"
-      placeholder="Search..."
-      value={query}
-      onChange={handleChange}
-      className="search-form"
-    />
+    <div className="searchForm__search-container">
+      <input
+        type="text"
+        placeholder="Search..."
+        value={query}
+        onChange={handleChange}
+        className="searchForm"
+      />
+      <button className="searchForm__search-button">Search</button>
+    </div>
   );
 }
 

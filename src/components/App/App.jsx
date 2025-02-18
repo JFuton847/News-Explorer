@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import "../../components/Header/header.css";
-import SearchForm from "../../components/SearchForm/SearchForm"; // Import SearchBar
+import SearchForm from "../../components/SearchForm/SearchForm";
 
 function App() {
   const [count, setCount] = useState(0);
