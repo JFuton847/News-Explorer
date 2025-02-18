@@ -1,0 +1,12 @@
+.App {
+  background-color: black;
+  background-image: url(../../assets/background-image.png);
+  font-family: "Inter", "Roboto", "Roboto-Slab" serif;
+  color: white;
+}
+
+.App__content {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
