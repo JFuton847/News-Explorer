@@ -6,6 +6,7 @@
   height: 64px;
   border-radius: 100px;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .searchForm {
