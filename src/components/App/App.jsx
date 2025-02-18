@@ -19,9 +19,8 @@ function App() {
           <div className="header__container">
             <h1 className="header__header-name">NewsExplorer</h1>
             <div className="header__user-container">
-              <button>Home</button>
-              <button>Saved articles</button>
-              <button>James</button>
+              <button className="header__home-button">Home</button>
+              <button className="header__login-button">Sign in</button>
             </div>
           </div>
           <h2 className="header__header-text">What's going on in the world?</h2>

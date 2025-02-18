@@ -17,7 +17,7 @@
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 42px;
 }
 
 .header__header-name {
@@ -25,6 +25,33 @@
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
+}
+
+.header__home-button {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto", serif;
+  cursor: pointer;
+  padding: 0;
+}
+
+.header__login-button {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 100px;
+  color: white;
+  padding: 8px 20px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto", serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 176px;
+  height: 48px;
 }
 
 .header__header-text {
