@@ -1,0 +1,130 @@
+.newsCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px;
+  justify-content: center;
+  padding: 62px 106px 62px 102px;
+  background-color: rgba(245, 246, 247, 1);
+  max-width: 100%;
+}
+
+.newsCards__card {
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  min-height: 576px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.newsCards__card-image {
+  width: 100%;
+  height: 272px;
+  border-radius: 15px;
+}
+
+.newsCards__card-date-text {
+  font-family: "Source Sans Pro", "Inter", sans-serif;
+  margin: 16px 24px 18px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(182, 188, 191, 1);
+}
+
+.newsCards__card-title {
+  font-family: "Roboto-Slab", "Inter", sans-serif;
+  text-overflow: ellipsis;
+  margin: 12px 24px 16px;
+  overflow: hidden;
+  margin-left: 24px;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  color: rgba(26, 27, 34, 1);
+}
+
+.newsCards__card-article-text {
+  font-family: "Roboto", "Inter", sans-serif;
+  max-width: calc(100% - 48px);
+  margin: 16px 0 18px;
+  padding: 0 24px;
+  letter-spacing: -0.5px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: rgba(26, 27, 34, 1);
+}
+
+.newsCards__card-source-text {
+  font-family: "Roboto-Slab", "Inter", sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-left: 24px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: rgba(182, 188, 191, 1);
+}
+
+.card__text-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.card__like-button {
+  background-image: url("../images/heart-disabled.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 21px;
+  height: 18px;
+  border-style: none;
+  background-color: #fff;
+  transition: opacity 0.4s ease-in-out;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.card__like-button_active {
+  background-image: url("../images/heart-active.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 21px;
+  height: 18px;
+  border-style: none;
+  background-color: #fff;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.card__like-button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.card__delete-button {
+  background-image: url("../images/delete.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  width: 18px;
+  height: 19.3px;
+  position: absolute;
+  right: 15px;
+  top: 18px;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.card__delete-button:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

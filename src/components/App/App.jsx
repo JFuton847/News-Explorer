@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "../../components/Header/Header";
 import About from "../../components/About/About";
 import Footer from "../../components/Footer/Footer";
+import NewsCard from "../../components/NewsCard/NewsCard";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,6 +18,7 @@ function App() {
       <div className="App__content">
         <Header onSearch={handleSearch} />
         <About />
+        <NewsCard />
         <Footer />
       </div>
     </div>
