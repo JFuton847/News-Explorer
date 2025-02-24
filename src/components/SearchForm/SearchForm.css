@@ -5,7 +5,7 @@
   width: 608px;
   height: 64px;
   border-radius: 100px;
-  overflow: hidden;
+  /* overflow: hidden; */
   box-sizing: border-box;
 }
 
@@ -21,8 +21,8 @@
 
 .searchForm__search-button {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -1px;
+  right: -1px;
   background-color: rgba(47, 113, 229, 1);
   color: white;
   border-radius: 100px;
@@ -31,6 +31,6 @@
   line-height: 24px;
   cursor: pointer;
   width: 168px;
-  height: 64px;
+  height: 66px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }

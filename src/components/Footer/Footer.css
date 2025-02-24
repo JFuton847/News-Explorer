@@ -1,0 +1,65 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 1);
+  color: rgba(182, 188, 191, 1);
+  padding: 32px 0 26px;
+  font-family: "Roboto", "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.footer__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 208px);
+  margin: 0 auto;
+}
+
+.footer__text {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.footer__nav-container {
+  display: flex;
+  align-items: center;
+  margin-left: 524px;
+}
+
+.footer__home-button {
+  background: none;
+  color: rgba(26, 27, 34, 1);
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.footer__tripleTen-button {
+  background: none;
+  color: rgba(26, 27, 34, 1);
+  border: none;
+  margin-left: 40px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.footer__facebook-button {
+  background-image: url("../../assets/fb.png");
+  width: 24px;
+  height: 24px;
+  margin-left: 24px;
+  border: none;
+  background-color: transparent;
+}
+
+.footer__github-button {
+  background-image: url("../../assets/github.png");
+  width: 24px;
+  height: 24px;
+  margin-left: 40px;
+  border: none;
+  background-color: transparent;
+}
