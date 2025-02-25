@@ -6,6 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
+import { authorize, checkToken } from "../../utils/auth.js";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,7 +45,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const onLogin = (values) => {
-    signin(values)
+    authorize(values)
       .then((res) => {
         console.log("Login Respons:", res);
         if (res.token) {
@@ -62,10 +63,39 @@ function App() {
       });
   };
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt");
+    setCurrentUser(null);
+    navigate("/");
+  };
+
+  const fetchCurrentUser = () => {
+    const token = localStorage.getItem("jwt");
+    if (!token) {
+      return Promise.reject("No token found");
+    }
+
+    return checkToken(token)
+      .then((res) => {
+        setCurrentUser(res.data);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        setIsLoggedIn(false);
+        setCurrentUser(null);
+        console.error("Error fetching current user:", err);
+      });
+  };
+
   return (
     <div className="App">
       <div className="App__content">
-        <Header setActiveModal={setActiveModal} onSearch={handleSearch} />
+        <Header
+          setActiveModal={setActiveModal}
+          onSearch={handleSearch}
+          handleLogout={handleLogout}
+        />
         <About />
         <NewsCard />
         <LoginModal
