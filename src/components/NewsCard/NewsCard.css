@@ -6,6 +6,8 @@
   padding: 62px 106px 62px 102px;
   background-color: rgba(245, 246, 247, 1);
   max-width: 100%;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .newsCards__card {
@@ -19,6 +21,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .newsCards__card-image {
@@ -27,54 +32,53 @@
   border-radius: 15px;
 }
 
+.newsCards__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin: 0 24px;
+  width: 352px;
+  max-width: calc(100% - 48px);
+}
+
 .newsCards__card-date-text {
   font-family: "Source Sans Pro", "Inter", sans-serif;
-  margin: 16px 24px 18px;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
   color: rgba(182, 188, 191, 1);
+  margin: 20px 0 0 0;
 }
 
 .newsCards__card-title {
   font-family: "Roboto-Slab", "Inter", sans-serif;
-  text-overflow: ellipsis;
-  margin: 12px 24px 16px;
   overflow: hidden;
-  margin-left: 24px;
   font-weight: 400;
   font-size: 26px;
   line-height: 30px;
   color: rgba(26, 27, 34, 1);
+  margin-top: 15px;
 }
 
 .newsCards__card-article-text {
   font-family: "Roboto", "Inter", sans-serif;
-  max-width: calc(100% - 48px);
-  margin: 16px 0 18px;
-  padding: 0 24px;
-  letter-spacing: -0.5px;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
   color: rgba(26, 27, 34, 1);
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  text-overflow: hidden;
 }
 
 .newsCards__card-source-text {
   font-family: "Roboto-Slab", "Inter", sans-serif;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin-left: 24px;
   font-weight: 700;
   font-size: 16px;
   line-height: 20px;
   color: rgba(182, 188, 191, 1);
-}
-
-.card__text-container {
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
 }
 
 .card__like-button {
