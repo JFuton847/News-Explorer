@@ -57,7 +57,7 @@
 }
 
 .header__header-text {
-  font-family: "Roboto-Slab", serif;
+  font-family: "Roboto-Slab", "Inter", sans-serif;
   font-weight: 400;
   font-size: 60px;
   line-height: 64px;

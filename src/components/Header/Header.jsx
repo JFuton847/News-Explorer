@@ -1,14 +1,19 @@
 import "./header.css";
 import SearchForm from "../../components/SearchForm/SearchForm";
 
-function Header({ onSearch }) {
+function Header({ onSearch, setActiveModal }) {
   return (
     <header className="header">
       <div className="header__container">
         <h1 className="header__header-name">NewsExplorer</h1>
         <div className="header__user-container">
           <button className="header__home-button">Home</button>
-          <button className="header__login-button">Sign in</button>
+          <button
+            className="header__login-button"
+            onClick={() => setActiveModal("login")}
+          >
+            Sign in
+          </button>
         </div>
       </div>
       <h2 className="header__header-text">What's going on in the world?</h2>
