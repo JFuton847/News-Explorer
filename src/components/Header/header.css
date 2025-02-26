@@ -23,7 +23,7 @@
 }
 
 .header__header-name {
-  font-family: "Roboto-Slab", serif;
+  font-family: "Roboto-Slab", "Inter", sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
@@ -35,7 +35,7 @@
   border: none;
   font-size: 18px;
   line-height: 24px;
-  font-family: "Roboto", serif;
+  font-family: "Roboto", "Inter", sans-serif;
   cursor: pointer;
   padding: 0;
 }
@@ -48,11 +48,38 @@
   padding: 8px 20px;
   font-size: 18px;
   line-height: 24px;
-  font-family: "Roboto", serif;
+  font-family: "Roboto", "Inter", sans-serif;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   width: 176px;
+  height: 48px;
+}
+
+.header__saved-articles-button {
+  background: none;
+  color: white;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto", "Inter" sans-serif;
+  cursor: pointer;
+  padding: 0;
+}
+
+.header__logout-button {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 100px;
+  color: white;
+  padding: 8px 20px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto", "inter", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 112px;
   height: 48px;
 }
 
@@ -68,7 +95,7 @@
 
 .header__subheader-text {
   margin: 32px 0 0 0;
-  font-family: "Roboto", serif;
+  font-family: "Roboto", "Inter", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;

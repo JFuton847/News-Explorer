@@ -95,6 +95,8 @@ function App() {
           setActiveModal={setActiveModal}
           onSearch={handleSearch}
           handleLogout={handleLogout}
+          isLoggedIn={isLoggedIn}
+          currentUser={currentUser}
         />
         <About />
         <NewsCard />
