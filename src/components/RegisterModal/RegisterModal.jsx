@@ -94,7 +94,7 @@ const RegisterModal = ({ onClose, onRegister, isOpen, openLoginModal }) => {
           className="modal__submit-other"
           onClick={openLoginModal}
         >
-          or Log in
+          or <span style={{ color: "#2f80ed" }}>Log in</span>
         </button>
       </div>
     </ModalWithForm>
