@@ -58,7 +58,7 @@
 
 .header__saved-articles-button {
   background: none;
-  color: white;
+  color: rgba(182, 188, 191, 1);
   border: none;
   font-size: 18px;
   line-height: 24px;
@@ -79,8 +79,20 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 112px;
+  width: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  min-width: 112px;
   height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.header__logout-button-image {
+  width: 17.41px;
+  height: 16px;
+  margin-left: 22px;
 }
 
 .header__header-text {

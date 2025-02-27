@@ -24,12 +24,15 @@
   margin: 0 auto;
 }
 
-/* .modal__title {
-  margin: 0;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-} */
+.modal__error-message {
+  color: rgba(255, 0, 0, 1);
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  margin: 3px 0 0;
+  display: block;
+}
 
 .modal__close {
   position: absolute;
@@ -56,6 +59,10 @@
   flex-direction: column;
   width: 100%;
   gap: 21px;
+}
+
+.modal__form:has(.modal__error-message) {
+  gap: 13px;
 }
 
 .modal__label {
@@ -103,6 +110,12 @@
   border: none;
   border-radius: 100px;
   color: rgba(182, 188, 191, 1);
+  cursor: pointer;
+}
+
+.modal__submit--active {
+  background-color: rgba(47, 113, 229, 1) !important;
+  color: rgba(255, 255, 255, 1) !important;
   cursor: pointer;
 }
 

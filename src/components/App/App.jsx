@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
-import { authorize, checkToken } from "../../utils/auth.js";
+import { authorize, checkToken, signup } from "../../utils/auth.js";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");

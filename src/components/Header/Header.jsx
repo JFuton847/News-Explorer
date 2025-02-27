@@ -1,7 +1,14 @@
 import "./header.css";
 import SearchForm from "../../components/SearchForm/SearchForm";
+import logoutButton from "../../assets/logout-button.png";
 
-function Header({ onSearch, setActiveModal, isLoggedIn, currentUser }) {
+function Header({
+  onSearch,
+  setActiveModal,
+  isLoggedIn,
+  currentUser,
+  handleLogout,
+}) {
   return (
     <header className="header">
       <div className="header__container">
@@ -14,11 +21,12 @@ function Header({ onSearch, setActiveModal, isLoggedIn, currentUser }) {
               <button className="header__saved-articles-button">
                 Saved articles
               </button>
-              <button className="header__logout-button">
+              <button className="header__logout-button" onClick={handleLogout}>
                 {currentUser?.name || "Anonymous"}
                 <img
-                  src="../../components/assets/logout-button.png"
+                  src={logoutButton}
                   alt="Logout"
+                  className="header__logout-button-image"
                 />
               </button>
             </>
