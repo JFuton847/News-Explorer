@@ -1,15 +1,17 @@
 import { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Header from "../../components/Header/Header";
-import About from "../../components/About/About";
 import Footer from "../../components/Footer/Footer";
-import NewsCard from "../../components/NewsCard/NewsCard";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
 import { authorize, checkToken, signup } from "../../utils/auth.js";
+import Main from "../../components/Main/Main";
+import SavedArticles from "../../components/SavedArticles/SavedArticles";
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -98,8 +100,10 @@ function App() {
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
         />
-        <About />
-        <NewsCard />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/saved-articles" element={<SavedArticles />} />
+        </Routes>
         <LoginModal
           isOpen={activeModal === "login"}
           onClose={closeActiveModal}

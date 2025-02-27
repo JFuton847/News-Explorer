@@ -1,6 +1,7 @@
 import "./header.css";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import logoutButton from "../../assets/logout-button.png";
+import { useNavigate } from "react-router-dom";
 
 function Header({
   onSearch,
@@ -9,6 +10,7 @@ function Header({
   currentUser,
   handleLogout,
 }) {
+  const navigate = useNavigate();
   return (
     <header className="header">
       <div className="header__container">
@@ -18,7 +20,10 @@ function Header({
 
           {isLoggedIn ? (
             <>
-              <button className="header__saved-articles-button">
+              <button
+                className="header__saved-articles-button"
+                onClick={() => navigate("/saved-articles")}
+              >
                 Saved articles
               </button>
               <button className="header__logout-button" onClick={handleLogout}>
