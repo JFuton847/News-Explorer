@@ -1,26 +1,48 @@
+import { useState } from "react";
 import "../../components/NewsCard/NewsCard.css";
+import { saveArticle } from "../../utils/api";
 
-function NewsCard({ articles }) {
+function NewsCard({ article }) {
+  const [savedArticles, setSavedArticles] = useState(new Set());
+
+  const handleSaveClick = (article) => {
+    saveArticle(article)
+      .then((savedArticle) => {
+        setSavedArticles((prev) => {
+          const newSet = new Set(prev);
+          if (newSet.has(savedArticle._id)) {
+            newSet.delete(savedArticle._id); // Remove if already saved
+          } else {
+            newSet.add(savedArticle._id); // Add if not saved
+          }
+          return newSet;
+        });
+      })
+      .catch((error) => {
+        console.error("Error saving article:", error);
+      });
+  };
+
   return (
-    <ul className="newsCards">
-      {articles.map((article) => (
-        <li className="newsCards__card" key={article._id}>
-          <img
-            src={article.imageUrl}
-            alt="News Image"
-            className="newsCards__card-image"
-          />
-          <div className="newsCards__content">
-            <p className="newsCards__card-date-text">Date</p>
-            <h2 className="newsCards__card-title">{article.title}</h2>
-            <p className="newsCards__card-article-text">
-              {article.description}
-            </p>
-            <p className="newsCards__card-source-text">Source</p>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <li className="newsCards__card" key={article._id}>
+      <button
+        className={`newsCards__card-save-button ${
+          savedArticles.has(article._id) ? "active" : ""
+        }`}
+        onClick={() => handleSaveClick(article)}
+      ></button>
+      <img
+        src={article.imageUrl}
+        alt="News Image"
+        className="newsCards__card-image"
+      />
+      <div className="newsCards__content">
+        <p className="newsCards__card-date-text">Date</p>
+        <h2 className="newsCards__card-title">{article.title}</h2>
+        <p className="newsCards__card-article-text">{article.description}</p>
+        <p className="newsCards__card-source-text">Source</p>
+      </div>
+    </li>
   );
 }
 

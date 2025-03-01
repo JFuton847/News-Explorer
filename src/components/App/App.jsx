@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import "./App.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -12,6 +12,7 @@ import SavedArticles from "../../components/SavedArticles/SavedArticles";
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSearch = (query) => {
     setSearchQuery(query);
@@ -90,6 +91,8 @@ function App() {
       });
   };
 
+  const isSavedArticlesPage = location.pathname === "/saved-articles";
+
   return (
     <div className="App">
       <div className="App__content">
@@ -99,10 +102,14 @@ function App() {
           handleLogout={handleLogout}
           isLoggedIn={isLoggedIn}
           currentUser={currentUser}
+          isSavedArticlesPage={isSavedArticlesPage}
         />
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/saved-articles" element={<SavedArticles />} />
+          <Route
+            path="/saved-articles"
+            element={<SavedArticles currentUser={currentUser} />}
+          />
         </Routes>
         <LoginModal
           isOpen={activeModal === "login"}

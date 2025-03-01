@@ -81,36 +81,33 @@
   color: rgba(182, 188, 191, 1);
 }
 
-.card__like-button {
-  background-image: url("../images/heart-disabled.svg");
-  background-size: contain;
+.newsCards__card-save-button {
+  background-image: url("../../assets/save-button.svg");
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  background-color: transparent;
+  background-size: 14px 19px;
   background-position: center;
   background-repeat: no-repeat;
-  width: 21px;
-  height: 18px;
-  border-style: none;
-  background-color: #fff;
-  transition: opacity 0.4s ease-in-out;
-  margin-left: auto;
-  margin-right: 20px;
-}
-
-.card__like-button_active {
-  background-image: url("../images/heart-active.svg");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 21px;
-  height: 18px;
-  border-style: none;
-  background-color: #fff;
-  margin-left: auto;
-  margin-right: 20px;
-}
-
-.card__like-button:hover {
-  opacity: 0.5;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.newsCards__card-save-button.active {
+  background-image: url("../../assets/save-button-active.svg");
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.newsCards__card-save-button:hover {
+  background-image: url("../../assets/save-button-hover.svg");
+  opacity: 0.7;
 }
 
 .card__delete-button {

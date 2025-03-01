@@ -1,0 +1,42 @@
+.savedArticles {
+}
+
+.savedArticles__container {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 40px;
+  padding-left: 104px;
+}
+
+.savedArticles__pageName-text {
+  font-family: "Roboto", "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 0.5);
+}
+
+.savedArticles__header-text {
+  font-family: "Roboto-Slab", "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1a1b22;
+}
+
+.savedArticles__keywords-text {
+  font-family: "Roboto", "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+}
+
+.savedArticles__keywords-value {
+  font-family: "Roboto", "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+}

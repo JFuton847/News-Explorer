@@ -1,32 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { saveArticle } from "../../utils/api"; // New API function to fetch saved articles
-import NewsCard from "../../components/NewsCard/NewsCard"; // Reuse NewsCard component for displaying articles
+import { saveArticle, getItems } from "../../utils/api.js";
+import NewsCard from "../../components/NewsCard/NewsCard";
+import "../Header/Header.css";
+import "./SavedArticles.css";
 
-function SavedArticles() {
+function SavedArticles({ currentUser }) {
   const [savedArticles, setSavedArticles] = useState([]);
+  const [keywords, setKeywords] = useState([]);
 
   useEffect(() => {
-    // Fetch saved articles on component mount
-    saveArticle()
+    // Assuming you want to save fetched articles:
+    getItems()
       .then((articles) => {
         setSavedArticles(articles);
+        const allKeywords = articles.flatMap((article) => article.keywords);
+        setKeywords([...new Set(allKeywords)]);
       })
       .catch((error) => {
         console.error("Error fetching saved articles:", error);
       });
   }, []);
 
+  const keywordsText = `By Keywords: ${keywords.join(", ")}`;
+
   return (
-    <div className="saved-articles">
-      <h2>Your Saved Articles</h2>
-      <ul className="saved-articles__list">
-        {savedArticles.map((article) => (
-          <li key={article._id}>
-            <NewsCard article={article} />{" "}
-            {/* Pass saved articles to NewsCard */}
-          </li>
-        ))}
-      </ul>
+    <div className="savedArticles">
+      <div className="savedArticles__container">
+        {" "}
+        {/* New container */}
+        <h1 className="savedArticles__pageName-text">Saved articles</h1>
+        <h2 className="savedArticles__header-text">
+          {currentUser?.name}, you have {savedArticles.length} saved articles
+        </h2>
+        <p className="savedArticles__keywords-text">
+          By Keywords:{" "}
+          <span
+            style={{
+              fontFamily: '"Roboto", "Inter", sans-serif',
+              fontWeight: 700,
+              fontSize: "18px",
+              lineHeight: "24px",
+            }}
+          >
+            {keywords.join(", ")}
+          </span>
+        </p>
+        <ul className="newsCards">
+          {savedArticles.map((article) => (
+            <NewsCard key={article._id} article={article} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
