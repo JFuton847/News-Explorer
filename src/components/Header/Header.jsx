@@ -7,6 +7,7 @@ import "./Header.css";
 
 function Header({
   onSearch,
+  onSearchSubmit,
   setActiveModal,
   isLoggedIn,
   currentUser,
@@ -93,7 +94,7 @@ function Header({
             Find the latest news on any topic and save them in your account
           </p>
           <div className="header__search">
-            <SearchForm onSearch={onSearch} />
+            <SearchForm onSearch={onSearch} onSearchSubmit={onSearchSubmit} />
           </div>
         </>
       )}
