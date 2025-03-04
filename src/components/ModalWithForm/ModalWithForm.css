@@ -190,3 +190,18 @@
   right: 32px;
   bottom: 68px;
 }
+
+.modal__success {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.modal__signin-btn {
+  margin-top: 10px;
+  background-color: rgba(47, 113, 229, 1);
+  border: none;
+  border-radius: 100px;
+  color: rgba(255, 255, 255, 1);
+  cursor: pointer;
+  padding: 10px 20px;
+}

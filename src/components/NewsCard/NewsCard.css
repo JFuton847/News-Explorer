@@ -171,3 +171,38 @@
   width: 100%;
   padding: 56px 0 80px;
 }
+
+.newsCard__no-results {
+  background-color: rgba(245, 246, 247, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.newsCard__no-results__top-message {
+  margin: 0;
+  font-family: "Roboto", "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  color: #1a1b22;
+}
+
+.newsCard__no-results_bottom-message {
+  margin-top: 16px;
+  font-family: " Roboto", "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #bcbcbf;
+}
+
+.newsCard__not-found-image {
+  width: 82.5;
+  height: 82.5;
+  padding-top: 86px;
+  padding-bottom: 31.5px;
+}

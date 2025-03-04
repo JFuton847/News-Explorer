@@ -31,6 +31,7 @@ export function getItems(query) {
           url: article.url,
           imageUrl: article.urlToImage,
           description: article.description,
+          date: article.publishedAt,
         }));
 
         resolve(articles);

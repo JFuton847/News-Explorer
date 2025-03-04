@@ -18,6 +18,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [error, setError] = useState(""); // Error message for validation
   const [loading, setLoading] = useState(false); // Loading state for API call
+  const [isRegistrationComplete, setIsRegistrationComplete] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -69,6 +70,7 @@ function App() {
     return signup(values)
       .then(() => {
         console.log("User registered successfully:", values);
+        setIsRegistrationComplete(true); // Ensure state updates after successful registration
         return onLogin({ email: values.email, password: values.password });
       })
       .catch((error) => {
@@ -163,6 +165,8 @@ function App() {
           onClose={closeActiveModal}
           onRegister={onRegister}
           openLoginModal={openLoginModal}
+          isRegistrationComplete={isRegistrationComplete}
+          setIsRegistrationComplete={setIsRegistrationComplete}
         />
         <Footer />
       </div>
