@@ -31,11 +31,13 @@ function NewsCard({ article }) {
         }`}
         onClick={() => handleSaveClick(article)}
       ></button>
-      <img
-        src={article.imageUrl}
-        alt="News Image"
-        className="newsCards__card-image"
-      />
+      <div className="newsCards__card-image-container">
+        <img
+          src={article.imageUrl}
+          alt="News Image"
+          className="newsCards__card-image"
+        />
+      </div>
       <div className="newsCards__content">
         <p className="newsCards__card-date-text">Date</p>
         <h2 className="newsCards__card-title">{article.title}</h2>
