@@ -30,6 +30,7 @@ export function getItems(query) {
           title: article.title,
           url: article.url,
           imageUrl: article.urlToImage,
+          description: article.description,
         }));
 
         resolve(articles);
@@ -47,6 +48,7 @@ export function saveArticle(article) {
       url: article.url, // Corrected property assignment
       title: article.title,
       imageUrl: article.imageUrl, // Corrected property name
+      description: article.description,
     });
   });
 }
