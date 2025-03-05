@@ -6,17 +6,6 @@
   padding-left: 104px;
 }
 
-.savedArticles .newsCard {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  padding: 0 106px 102px;
-  background-color: rgba(245, 246, 247, 1);
-  max-width: 100%; /* Allow it to stretch fully across */
-  margin: 0 auto;
-  list-style-type: none;
-}
-
 .savedArticles__pageName-text {
   font-family: "Roboto", "Inter", sans-serif;
   font-weight: 400;
