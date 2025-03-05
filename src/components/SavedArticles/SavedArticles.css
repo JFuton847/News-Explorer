@@ -2,7 +2,10 @@
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+.savedArticles__text-container {
   padding-left: 104px;
 }
 

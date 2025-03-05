@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { saveArticle, getItems } from "../../utils/api.js";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import "../Header/Header.css";
 import "./SavedArticles.css";
@@ -9,45 +8,55 @@ function SavedArticles({ currentUser }) {
   const [keywords, setKeywords] = useState([]);
 
   useEffect(() => {
-    // Assuming you want to save fetched articles:
-    getItems()
-      .then((articles) => {
-        setSavedArticles(articles);
-        const allKeywords = articles.flatMap((article) => article.keywords);
-        setKeywords([...new Set(allKeywords)]);
-      })
-      .catch((error) => {
-        console.error("Error fetching saved articles:", error);
-      });
-  }, []);
+    const savedArticlesDetails =
+      JSON.parse(localStorage.getItem("savedArticlesDetails")) || [];
+    console.log(
+      "Retrieved saved article details from local storage:",
+      savedArticlesDetails
+    );
 
-  const keywordsText = `By Keywords: ${keywords.join(", ")}`;
+    if (savedArticlesDetails.length > 0) {
+      // Ensure no duplicates
+      const uniqueArticles = savedArticlesDetails.reduce((acc, current) => {
+        const x = acc.find((item) => item.url === current.url);
+        if (!x) {
+          return acc.concat([current]);
+        } else {
+          return acc;
+        }
+      }, []);
+      setSavedArticles(uniqueArticles);
+
+      const allKeywords = uniqueArticles.flatMap((article) => article.keywords);
+      setKeywords([...new Set(allKeywords)]);
+    }
+  }, []);
 
   return (
     <div className="savedArticles">
       <div className="savedArticles__container">
-        {" "}
-        {/* New container */}
-        <h1 className="savedArticles__pageName-text">Saved articles</h1>
-        <h2 className="savedArticles__header-text">
-          {currentUser?.name}, you have {savedArticles.length} saved articles
-        </h2>
-        <p className="savedArticles__keywords-text">
-          By Keywords:{" "}
-          <span
-            style={{
-              fontFamily: '"Roboto", "Inter", sans-serif',
-              fontWeight: 700,
-              fontSize: "18px",
-              lineHeight: "24px",
-            }}
-          >
-            {keywords.join(", ")}
-          </span>
-        </p>
+        <div className="savedArticles__text-container">
+          <h1 className="savedArticles__pageName-text">Saved articles</h1>
+          <h2 className="savedArticles__header-text">
+            {currentUser?.name}, you have {savedArticles.length} saved articles
+          </h2>
+          <p className="savedArticles__keywords-text">
+            By Keywords:{" "}
+            <span
+              style={{
+                fontFamily: '"Roboto", "Inter", sans-serif',
+                fontWeight: 700,
+                fontSize: "18px",
+                lineHeight: "24px",
+              }}
+            >
+              {keywords.join(", ")}
+            </span>
+          </p>
+        </div>
         <ul className="newsCard">
           {savedArticles.map((article) => (
-            <NewsCard key={article._id} article={article} />
+            <NewsCard key={article.url} article={article} isSavedPage={true} />
           ))}
         </ul>
       </div>

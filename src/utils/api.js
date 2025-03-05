@@ -32,7 +32,7 @@ export function getItems(query) {
           imageUrl: article.urlToImage,
           description: article.description,
           date: article.publishedAt,
-          source: article.source.name,
+          source: article.source?.name || "Unknown Source", // Default to "Unknown Source" if name is missing
         }));
 
         resolve(articles);
@@ -43,16 +43,56 @@ export function getItems(query) {
   });
 }
 
+export function getArticlesByUrls(urls) {
+  return Promise.all(
+    urls.map((url) =>
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok for URL: ${url}`);
+          }
+          return response.json();
+        })
+        .then((data) => ({
+          _id: url,
+          title: data.title,
+          url: data.url,
+          imageUrl: data.urlToImage,
+          description: data.description,
+          date: data.publishedAt,
+          source: data.source?.name || "Unknown Source", // Default to "Unknown Source" if name is missing
+        }))
+        .catch((error) => {
+          console.error(`Error fetching article for URL: ${url}`, error);
+          return null;
+        })
+    )
+  ).then((articles) => articles.filter((article) => article !== null));
+}
+
 export function saveArticle(article) {
   return new Promise((resolve, reject) => {
-    resolve({
-      _id: "65f7371e7bce9e7d331b11a0", // another fake MongoDB ID
-      url: article.url, // Corrected property assignment
-      title: article.title,
-      imageUrl: article.imageUrl, // Corrected property name
-      description: article.description,
-      date: article.publishedAt,
-      source: article.source.name,
-    });
+    const sourceName = article.source?.name || "Unknown Source"; // Handle missing source.name
+    if (
+      !article.url ||
+      !article.title ||
+      !article.imageUrl ||
+      !article.description ||
+      !article.publishedAt
+    ) {
+      console.error("Article object is missing required properties:", article);
+      reject(new Error("Article object is missing required properties"));
+    } else {
+      console.log("Saving article object:", article); // Log the article object
+      resolve({
+        _id: article.url,
+        url: article.url,
+        title: article.title,
+        imageUrl: article.imageUrl,
+        description: article.description,
+        date: article.publishedAt,
+        source: sourceName, // Use the defaulted or actual source name
+      });
+    }
   });
 }
