@@ -6,6 +6,7 @@
   padding: 32px 0 28px;
   background-image: url(../../assets/background-image.png);
   padding: 26px 104px;
+  border-bottom: 1px solid #c4c4c4;
 }
 
 .header__container {

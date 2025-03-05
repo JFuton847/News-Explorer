@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "../../components/NewsCard/NewsCard.css";
 import { saveArticle } from "../../utils/api";
 
-function NewsCard({ article, isSavedPage, onDelete }) {
+function NewsCard({ article, isSavedPage, onDelete, isLoggedIn }) {
   const [savedArticles, setSavedArticles] = useState(new Set());
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltipRef = useRef(null);
@@ -15,6 +15,11 @@ function NewsCard({ article, isSavedPage, onDelete }) {
 
   const handleSaveClick = (article, e) => {
     e.stopPropagation();
+
+    if (!isLoggedIn) {
+      setShowTooltip(true); // Show tooltip if not logged in
+      return;
+    }
 
     let savedArticlesArray =
       JSON.parse(localStorage.getItem("savedArticlesDetails")) || [];
@@ -89,12 +94,21 @@ function NewsCard({ article, isSavedPage, onDelete }) {
           )}
         </>
       ) : (
-        <button
-          className={`newsCard__card-save-button ${
-            savedArticles.has(article.url) ? "active" : ""
-          }`}
-          onClick={(e) => handleSaveClick(article, e)}
-        ></button>
+        <>
+          <button
+            className={`newsCard__card-save-button ${
+              savedArticles.has(article.url) ? "active" : ""
+            }`}
+            onClick={(e) => handleSaveClick(article, e)}
+            onMouseEnter={() => !isLoggedIn && setShowTooltip(true)} // Show tooltip when not logged in
+            onMouseLeave={() => setShowTooltip(false)}
+          ></button>
+          {showTooltip && !isLoggedIn && (
+            <div ref={tooltipRef} className="newsCard__card-tooltip">
+              Sign in to save articles
+            </div>
+          )}
+        </>
       )}
       <div className="newsCard__card-image-container">
         <img

@@ -129,6 +129,8 @@ function App() {
 
   const isSavedArticlesPage = location.pathname === "/saved-articles";
 
+  const searched = searchQuery && articles.length > 0;
+
   return (
     <div className="App">
       <div className="App__content">
@@ -151,6 +153,8 @@ function App() {
                 onSearchSubmit={handleSearchSubmit}
                 loading={loading}
                 error={error}
+                searched={searched}
+                isLoggedIn={isLoggedIn}
               />
             }
           />

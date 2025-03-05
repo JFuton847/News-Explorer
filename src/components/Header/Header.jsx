@@ -21,6 +21,8 @@ function Header({
     ? logoutButtonOther
     : logoutButton;
 
+  const isHomePage = !isSavedArticlesPage;
+
   return (
     <header
       className="header"
@@ -44,7 +46,6 @@ function Header({
             onClick={() => navigate("/")}
             style={{
               color: isSavedArticlesPage ? "#1a1b22" : "", // Change color when on SavedArticles page
-              border: isSavedArticlesPage ? "1px solid #1a1b22" : "", // Change border color when on SavedArticles page
             }}
           >
             Home

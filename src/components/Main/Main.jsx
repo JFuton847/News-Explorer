@@ -3,7 +3,7 @@ import NewsCard from "../../components/NewsCard/NewsCard";
 import About from "../../components/About/About";
 import NotFoundImage from "../../assets/not-found.png";
 
-function Main({ articles, loading, error, searched }) {
+function Main({ articles, loading, error, searched, isLoggedIn }) {
   const [visibleCount, setVisibleCount] = useState(3);
 
   if (loading) return <p>Loading articles...</p>;
@@ -14,11 +14,18 @@ function Main({ articles, loading, error, searched }) {
 
   return (
     <main>
+      {searched && (
+        <h1 className="newsCard__search-results-header">Search results</h1>
+      )}
       {articles.length > 0 ? (
         <>
           <ul className="newsCard">
             {articles.slice(0, visibleCount).map((article) => (
-              <NewsCard key={article._id} article={article} />
+              <NewsCard
+                key={article._id}
+                article={article}
+                isLoggedIn={isLoggedIn}
+              />
             ))}
           </ul>
           {visibleCount < articles.length && (
