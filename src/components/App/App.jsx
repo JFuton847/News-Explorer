@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import RegisterModal from "../../components/RegisterModal/RegisterModal";
 import LoginModal from "../../components/LoginModal/LoginModal";
+import RegistrationCompleteModal from "../../components/RegistrationCompleteModal/RegistrationCompleteModal";
 import { authorize, checkToken, signup } from "../../utils/auth.js";
 import Main from "../../components/Main/Main";
 import SavedArticles from "../../components/SavedArticles/SavedArticles";
@@ -66,12 +67,16 @@ function App() {
     setActiveModal("");
   };
 
+  const openRegistrationCompleteModal = () => {
+    setActiveModal("RegistrationComplete");
+  };
+
   const onRegister = (values) => {
     return signup(values)
       .then(() => {
         console.log("User registered successfully:", values);
         setIsRegistrationComplete(true); // Ensure state updates after successful registration
-        return onLogin({ email: values.email, password: values.password });
+        openRegistrationCompleteModal();
       })
       .catch((error) => {
         console.error("Error during registration or login:", error);
@@ -165,8 +170,11 @@ function App() {
           onClose={closeActiveModal}
           onRegister={onRegister}
           openLoginModal={openLoginModal}
-          isRegistrationComplete={isRegistrationComplete}
-          setIsRegistrationComplete={setIsRegistrationComplete}
+        />
+        <RegistrationCompleteModal
+          isOpen={activeModal === "RegistrationComplete"}
+          onClose={closeActiveModal}
+          openLoginModal={openLoginModal}
         />
         <Footer />
       </div>

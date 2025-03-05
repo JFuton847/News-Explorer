@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const RegisterModal = ({
-  onClose,
-  onRegister,
-  isOpen,
-  openLoginModal,
-  isRegistrationComplete, // Receive success state
-  setIsRegistrationComplete, // Receive setter for the success state
-}) => {
+const RegisterModal = ({ onClose, onRegister, isOpen, openLoginModal }) => {
   const [createUserValues, setCreateUserValues] = useState({
     email: "",
     password: "",
@@ -23,15 +16,12 @@ const RegisterModal = ({
 
   useEffect(() => {
     if (!isOpen) {
-      // Reset form fields when modal is closed
       setCreateUserValues({ email: "", password: "", username: "" });
       setErrors({ email: "", password: "", username: "" });
-      setIsRegistrationComplete(false); // Reset the success state when modal is closed
     }
   }, [isOpen]);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const [isFormValid, setIsFormValid] = useState(false);
 
   useEffect(() => {
@@ -78,118 +68,90 @@ const RegisterModal = ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
-
-    // Clear error message when user starts typing
     setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!validateInputs()) return;
-
     setIsSubmitting(true);
-
-    onRegister(createUserValues).finally(() => setIsSubmitting(false)); // Make sure to stop the submission process
+    onRegister(createUserValues).finally(() => setIsSubmitting(false));
   };
 
   return (
     <ModalWithForm
-      title={
-        isRegistrationComplete
-          ? "Registration successfully completed!"
-          : "Register"
-      }
-      buttonText={
-        isRegistrationComplete
-          ? "Sign in"
-          : isSubmitting
-          ? "Submitting Registration..."
-          : "Register"
-      }
+      title="Register"
+      buttonText={isSubmitting ? "Submitting Registration..." : "Register"}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={isRegistrationComplete ? openLoginModal : handleSubmit}
+      onSubmit={handleSubmit}
     >
-      {console.log("RegisterModal render", isRegistrationComplete)}
-      {isRegistrationComplete ? (
-        <div>
-          <p>Registration successfully completed!</p>
-        </div>
-      ) : (
-        <>
-          <label htmlFor="register-email" className="modal__label">
-            Email
-            <input
-              type="email"
-              className="modal__input"
-              id="register-email"
-              placeholder="Email"
-              name="email"
-              value={createUserValues.email}
-              onChange={handleChange}
-              required
-            />
-            {errors.email && (
-              <p className="modal__error-message">{errors.email}</p>
-            )}
-          </label>
+      <label htmlFor="register-email" className="modal__label">
+        Email
+        <input
+          type="email"
+          className="modal__input"
+          id="register-email"
+          placeholder="Email"
+          name="email"
+          value={createUserValues.email}
+          onChange={handleChange}
+          required
+        />
+        {errors.email && <p className="modal__error-message">{errors.email}</p>}
+      </label>
 
-          <label htmlFor="register-password" className="modal__label">
-            Password
-            <input
-              type="password"
-              className="modal__input"
-              id="register-password"
-              name="password"
-              placeholder="Password"
-              value={createUserValues.password}
-              onChange={handleChange}
-              required
-            />
-            {errors.password && (
-              <p className="modal__error-message">{errors.password}</p>
-            )}
-          </label>
+      <label htmlFor="register-password" className="modal__label">
+        Password
+        <input
+          type="password"
+          className="modal__input"
+          id="register-password"
+          name="password"
+          placeholder="Password"
+          value={createUserValues.password}
+          onChange={handleChange}
+          required
+        />
+        {errors.password && (
+          <p className="modal__error-message">{errors.password}</p>
+        )}
+      </label>
 
-          <label htmlFor="username" className="modal__label">
-            Username
-            <input
-              type="text"
-              className="modal__input"
-              id="username"
-              placeholder="Username"
-              name="username"
-              value={createUserValues.username}
-              onChange={handleChange}
-              required
-            />
-            {errors.username && (
-              <p className="modal__error-message">{errors.username}</p>
-            )}
-          </label>
-        </>
-      )}
+      <label htmlFor="username" className="modal__label">
+        Username
+        <input
+          type="text"
+          className="modal__input"
+          id="username"
+          placeholder="Username"
+          name="username"
+          value={createUserValues.username}
+          onChange={handleChange}
+          required
+        />
+        {errors.username && (
+          <p className="modal__error-message">{errors.username}</p>
+        )}
+      </label>
 
-      {!isRegistrationComplete && (
-        <div className="modal__buttons-container">
-          <button
-            type="submit"
-            className={`modal__submit ${
-              isFormValid ? "modal__submit--active" : ""
-            }`}
-          >
-            {isSubmitting ? "Submitting Registration..." : "Sign up"}
-          </button>
-          <button
-            type="button"
-            className="modal__submit-other"
-            onClick={openLoginModal}
-          >
-            or <span style={{ color: "#2f80ed" }}>Log in</span>
-          </button>
-        </div>
-      )}
+      <div className="modal__buttons-container">
+        <button
+          type="submit"
+          className={`modal__submit ${
+            isFormValid ? "modal__submit--active" : ""
+          }`}
+        >
+          {isSubmitting ? "Submitting Registration..." : "Sign up"}
+        </button>
+        <button
+          type="button"
+          className="modal__submit-other"
+          onClick={openLoginModal}
+        >
+          or <span style={{ color: "#2f80ed" }}>Log in</span>
+        </button>
+      </div>
     </ModalWithForm>
   );
 };
