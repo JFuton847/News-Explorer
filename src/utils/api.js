@@ -15,7 +15,7 @@ export function getItems(query) {
     const to = currentDate.toISOString().split("T")[0];
 
     // Constructing the API URL with parameters
-    const apiUrl = `${newsApiBaseUrl}?q=${query}&apiKey=${apiKey}&from=${from}&to=${to}&pageSize=100`;
+    const apiUrl = `${newsApiBaseUrl}?q=${query}&apiKey=${apiKey}&from=${from}&to=${to}&pageSize=15`;
 
     fetch(apiUrl)
       .then((response) => {
@@ -32,6 +32,7 @@ export function getItems(query) {
           imageUrl: article.urlToImage,
           description: article.description,
           date: article.publishedAt,
+          source: article.source.name,
         }));
 
         resolve(articles);
@@ -50,6 +51,8 @@ export function saveArticle(article) {
       title: article.title,
       imageUrl: article.imageUrl, // Corrected property name
       description: article.description,
+      date: article.publishedAt,
+      source: article.source.name,
     });
   });
 }

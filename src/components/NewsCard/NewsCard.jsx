@@ -1,54 +1,75 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../components/NewsCard/NewsCard.css";
 import { saveArticle } from "../../utils/api";
 
 function NewsCard({ article }) {
+  // Manage saved articles state at the NewsCard level
   const [savedArticles, setSavedArticles] = useState(new Set());
 
-  const handleSaveClick = (article) => {
-    saveArticle(article)
-      .then((savedArticle) => {
-        setSavedArticles((prev) => {
-          const newSet = new Set(prev);
-          if (newSet.has(savedArticle._id)) {
-            newSet.delete(savedArticle._id); // Remove if already saved
-          } else {
-            newSet.add(savedArticle._id); // Add if not saved
-          }
-          return newSet;
-        });
-      })
-      .catch((error) => {
-        console.error("Error saving article:", error);
+  useEffect(() => {
+    // Check if the article is already saved when the component is mounted
+    const savedArticleIds =
+      JSON.parse(localStorage.getItem("savedArticles")) || [];
+    setSavedArticles(new Set(savedArticleIds));
+  }, []);
+
+  const handleSaveClick = (article, e) => {
+    e.stopPropagation();
+
+    // Check if the article is already saved
+    if (savedArticles.has(article._id)) {
+      setSavedArticles((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(article._id); // Remove article from saved
+        localStorage.setItem(
+          "savedArticles",
+          JSON.stringify(Array.from(newSet))
+        );
+        return newSet;
       });
+    } else {
+      setSavedArticles((prev) => {
+        const newSet = new Set(prev);
+        newSet.add(article._id); // Add article to saved
+        localStorage.setItem(
+          "savedArticles",
+          JSON.stringify(Array.from(newSet))
+        );
+        return newSet;
+      });
+    }
+  };
+
+  const handleCardClick = () => {
+    window.open(article.url, "_blank");
   };
 
   return (
-    <li className="newsCards__card" key={article._id}>
+    <li className="newsCard__card" key={article._id} onClick={handleCardClick}>
       <button
-        className={`newsCards__card-save-button ${
+        className={`newsCard__card-save-button ${
           savedArticles.has(article._id) ? "active" : ""
         }`}
-        onClick={() => handleSaveClick(article)}
+        onClick={(e) => handleSaveClick(article, e)}
       ></button>
-      <div className="newsCards__card-image-container">
+      <div className="newsCard__card-image-container">
         <img
           src={article.imageUrl}
           alt="News Image"
-          className="newsCards__card-image"
+          className="newsCard__card-image"
         />
       </div>
-      <div className="newsCards__content">
-        <p className="newsCards__card-date-text">
+      <div className="newsCard__content">
+        <p className="newsCard__card-date-text">
           {new Date(article.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}
         </p>
-        <h2 className="newsCards__card-title">{article.title}</h2>
-        <p className="newsCards__card-article-text">{article.description}</p>
-        <p className="newsCards__card-source-text">Source</p>
+        <h2 className="newsCard__card-title">{article.title}</h2>
+        <p className="newsCard__card-article-text">{article.description}</p>
+        <p className="newsCard__card-source-text">{article.source}</p>
       </div>
     </li>
   );

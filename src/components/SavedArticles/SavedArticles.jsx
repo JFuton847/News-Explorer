@@ -45,7 +45,7 @@ function SavedArticles({ currentUser }) {
             {keywords.join(", ")}
           </span>
         </p>
-        <ul className="newsCards">
+        <ul className="newsCard">
           {savedArticles.map((article) => (
             <NewsCard key={article._id} article={article} />
           ))}

@@ -16,15 +16,15 @@ function Main({ articles, loading, error, searched }) {
     <main>
       {articles.length > 0 ? (
         <>
-          <ul className="newsCards">
+          <ul className="newsCard">
             {articles.slice(0, visibleCount).map((article) => (
               <NewsCard key={article._id} article={article} />
             ))}
           </ul>
           {visibleCount < articles.length && (
-            <div className="newsCards__show-more-button-container">
+            <div className="newsCard__show-more-button-container">
               <button
-                className="newsCards__show-more-button"
+                className="newsCard__show-more-button"
                 onClick={handleShowMore}
               >
                 Show More
