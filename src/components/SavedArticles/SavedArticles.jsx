@@ -32,6 +32,24 @@ function SavedArticles({ currentUser }) {
     }
   }, []);
 
+  const handleDeleteArticle = (url) => {
+    // Remove from state
+    const updatedArticles = savedArticles.filter(
+      (article) => article.url !== url
+    );
+    setSavedArticles(updatedArticles);
+
+    // Remove from local storage
+    localStorage.setItem(
+      "savedArticlesDetails",
+      JSON.stringify(updatedArticles)
+    );
+
+    // Update the saved article URLs as well
+    const savedArticleUrls = updatedArticles.map((article) => article.url);
+    localStorage.setItem("savedArticles", JSON.stringify(savedArticleUrls));
+  };
+
   return (
     <div className="savedArticles">
       <div className="savedArticles__container">
@@ -40,25 +58,34 @@ function SavedArticles({ currentUser }) {
           <h2 className="savedArticles__header-text">
             {currentUser?.name}, you have {savedArticles.length} saved articles
           </h2>
-          <p className="savedArticles__keywords-text">
-            By Keywords:{" "}
-            <span
-              style={{
-                fontFamily: '"Roboto", "Inter", sans-serif',
-                fontWeight: 700,
-                fontSize: "18px",
-                lineHeight: "24px",
-              }}
-            >
-              {keywords.join(", ")}
-            </span>
-          </p>
+          {savedArticles.length > 0 && (
+            <p className="savedArticles__keywords-text">
+              By Keywords:{" "}
+              <span
+                style={{
+                  fontFamily: '"Roboto", "Inter", sans-serif',
+                  fontWeight: 700,
+                  fontSize: "18px",
+                  lineHeight: "24px",
+                }}
+              >
+                {keywords.join(", ")}
+              </span>
+            </p>
+          )}
         </div>
-        <ul className="newsCard">
-          {savedArticles.map((article) => (
-            <NewsCard key={article.url} article={article} isSavedPage={true} />
-          ))}
-        </ul>
+        {savedArticles.length > 0 ? (
+          <ul className="newsCard">
+            {savedArticles.map((article) => (
+              <NewsCard
+                key={article.url}
+                article={article}
+                isSavedPage={true}
+                onDelete={handleDeleteArticle}
+              />
+            ))}
+          </ul>
+        ) : null}
       </div>
     </div>
   );

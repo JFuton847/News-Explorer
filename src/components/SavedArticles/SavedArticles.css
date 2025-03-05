@@ -1,8 +1,15 @@
+.savedArticles {
+  display: flex;
+  flex-direction: column;
+  min-height: 75vh;
+}
+
 .savedArticles__container {
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  flex: 1;
 }
 
 .savedArticles__text-container {
