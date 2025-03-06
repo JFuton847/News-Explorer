@@ -157,7 +157,7 @@ function App() {
                 error={error}
                 searched={searched}
                 isLoggedIn={isLoggedIn}
-                keywords={keywords} // Pass keywords here
+                keywords={keywords}
               />
             }
           />

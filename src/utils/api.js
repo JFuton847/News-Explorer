@@ -72,7 +72,12 @@ export function getArticlesByUrls(urls) {
 
 export function saveArticle(article, searchKeywords) {
   return new Promise((resolve, reject) => {
-    const sourceName = article.source?.name || "Unknown Source"; // Handle missing source.name
+    // Check if article.source is a string; if not, use article.source.name
+    const sourceName =
+      typeof article.source === "string"
+        ? article.source
+        : article.source?.name || "Unknown Source";
+
     if (
       !article.url ||
       !article.title ||
@@ -91,7 +96,7 @@ export function saveArticle(article, searchKeywords) {
         imageUrl: article.imageUrl,
         description: article.description,
         date: article.date || article.publishedAt,
-        source: sourceName,
+        source: sourceName, // Use the computed sourceName here
         keywords: searchKeywords || [], // Use the search term as the keyword
       });
     }

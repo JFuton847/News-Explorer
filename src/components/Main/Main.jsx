@@ -31,7 +31,8 @@ function Main({ articles, loading, error, searched, isLoggedIn, keywords }) {
                 key={article._id}
                 article={article}
                 isLoggedIn={isLoggedIn}
-                keywords={searchQuery}
+                keywords={keywords}
+                source={article.source}
               />
             ))}
           </ul>

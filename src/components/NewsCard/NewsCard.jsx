@@ -3,6 +3,7 @@ import "../../components/NewsCard/NewsCard.css";
 import { saveArticle } from "../../utils/api";
 
 function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
+  console.log("Keywords:", keywords);
   const [savedArticles, setSavedArticles] = useState(new Set());
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltipRef = useRef(null);
@@ -17,7 +18,7 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
     e.stopPropagation();
 
     if (!isLoggedIn) {
-      setShowTooltip(true); // Show tooltip if not logged in
+      setShowTooltip(true);
       return;
     }
 
@@ -25,8 +26,8 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
       JSON.parse(localStorage.getItem("savedArticlesDetails")) || [];
 
     // Use the keywords passed as props (e.g., "Seinfeld")
-    const searchKeywords = keywords || []; // This should be the search term(s) you used
-    console.log("Saving article with keywords:", searchKeywords); // Debugging line
+    const searchKeywords = keywords || [];
+    console.log("Saving article with keywords:", searchKeywords);
 
     if (savedArticles.has(article.url)) {
       setSavedArticles((prev) => {
@@ -48,9 +49,9 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
         return newSet;
       });
     } else {
-      saveArticle(article, searchKeywords) // Pass searchKeywords here
+      saveArticle(article, searchKeywords)
         .then((savedArticle) => {
-          console.log("Saved article:", savedArticle); // Debugging line
+          console.log("Saved article:", savedArticle);
 
           setSavedArticles((prev) => {
             const newSet = new Set(prev);
@@ -75,13 +76,21 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
     }
   };
 
+  // Opens the article URL in a new tab.
+  const handleCardClick = () => {
+    window.open(article.url, "_blank");
+  };
+
   return (
-    <li className="newsCard__card" key={article.url}>
+    <li className="newsCard__card" key={article.url} onClick={handleCardClick}>
       {isSavedPage ? (
         <>
           <button
             className="newsCard__card-delete-button"
-            onClick={() => onDelete(article.url)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(article.url);
+            }}
             onMouseEnter={() => setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           ></button>
@@ -98,7 +107,7 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
               savedArticles.has(article.url) ? "active" : ""
             }`}
             onClick={(e) => handleSaveClick(article, e)}
-            onMouseEnter={() => !isLoggedIn && setShowTooltip(true)} // Show tooltip when not logged in
+            onMouseEnter={() => !isLoggedIn && setShowTooltip(true)}
             onMouseLeave={() => setShowTooltip(false)}
           ></button>
           {showTooltip && !isLoggedIn && (
@@ -125,7 +134,12 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
         </p>
         <h2 className="newsCard__card-title">{article.title}</h2>
         <p className="newsCard__card-article-text">{article.description}</p>
-        <p className="newsCard__card-source-text">{article.source.name}</p>
+        <p className="newsCard__card-source-text">{article.source}</p>
+        {isSavedPage && (
+          <div className="newsCard__card-keyword">
+            {keywords && keywords.length > 0 && <span>{keywords[0]}</span>}
+          </div>
+        )}
       </div>
     </li>
   );

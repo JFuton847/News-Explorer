@@ -92,8 +92,7 @@ function SavedArticles({ currentUser }) {
                   lineHeight: "24px",
                 }}
               >
-                {displayKeywords(keywords)}{" "}
-                {/* Call displayKeywords instead of join */}
+                {displayKeywords(keywords)}
               </span>
             </p>
           )}
@@ -106,6 +105,7 @@ function SavedArticles({ currentUser }) {
                 article={article}
                 isSavedPage={true}
                 onDelete={handleDeleteArticle}
+                keywords={keywords}
               />
             ))}
           </ul>
