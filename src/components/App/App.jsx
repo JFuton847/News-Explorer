@@ -20,6 +20,7 @@ function App() {
   const [error, setError] = useState(""); // Error message for validation
   const [loading, setLoading] = useState(false); // Loading state for API call
   const [isRegistrationComplete, setIsRegistrationComplete] = useState(false);
+  const [keywords, setKeywords] = useState([]);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,6 +28,11 @@ function App() {
   const handleSearch = (query) => {
     setSearchQuery(query); // Update search query on input
     setError(""); // Reset error on input change
+  };
+
+  const handleSearchSubmit = () => {
+    fetchArticles(searchQuery); // Fetch articles when user submits a search
+    setKeywords([searchQuery]); // Store the search query as the keyword
   };
 
   const fetchArticles = async (query) => {
@@ -49,10 +55,6 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleSearchSubmit = () => {
-    fetchArticles(searchQuery); // Fetch articles when user submits a search
   };
 
   const openRegisterModal = () => {
@@ -155,6 +157,7 @@ function App() {
                 error={error}
                 searched={searched}
                 isLoggedIn={isLoggedIn}
+                keywords={keywords} // Pass keywords here
               />
             }
           />

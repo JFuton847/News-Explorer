@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import "../../components/NewsCard/NewsCard.css";
 import { saveArticle } from "../../utils/api";
 
-function NewsCard({ article, isSavedPage, onDelete, isLoggedIn }) {
+function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
   const [savedArticles, setSavedArticles] = useState(new Set());
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltipRef = useRef(null);
@@ -24,13 +24,9 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn }) {
     let savedArticlesArray =
       JSON.parse(localStorage.getItem("savedArticlesDetails")) || [];
 
-    if (typeof article.source === "string") {
-      article.source = { name: article.source };
-    } else {
-      article.source = article.source || {};
-      article.source.name = article.source.name || "Unknown Source";
-    }
-    article.publishedAt = article.publishedAt || new Date().toISOString();
+    // Use the keywords passed as props (e.g., "Seinfeld")
+    const searchKeywords = keywords || []; // This should be the search term(s) you used
+    console.log("Saving article with keywords:", searchKeywords); // Debugging line
 
     if (savedArticles.has(article.url)) {
       setSavedArticles((prev) => {
@@ -52,8 +48,10 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn }) {
         return newSet;
       });
     } else {
-      saveArticle(article)
+      saveArticle(article, searchKeywords) // Pass searchKeywords here
         .then((savedArticle) => {
+          console.log("Saved article:", savedArticle); // Debugging line
+
           setSavedArticles((prev) => {
             const newSet = new Set(prev);
             newSet.add(savedArticle.url);

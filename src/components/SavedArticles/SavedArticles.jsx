@@ -7,6 +7,19 @@ function SavedArticles({ currentUser }) {
   const [savedArticles, setSavedArticles] = useState([]);
   const [keywords, setKeywords] = useState([]);
 
+  const displayKeywords = (keywords) => {
+    if (keywords.length === 1) {
+      return keywords[0];
+    } else if (keywords.length === 2) {
+      return `${keywords[0]} and ${keywords[1]}`;
+    } else if (keywords.length > 2) {
+      return `${keywords[0]}, ${keywords[1]}, and ${
+        keywords.length - 2
+      } others`;
+    }
+    return "";
+  };
+
   useEffect(() => {
     const savedArticlesDetails =
       JSON.parse(localStorage.getItem("savedArticlesDetails")) || [];
@@ -27,7 +40,11 @@ function SavedArticles({ currentUser }) {
       }, []);
       setSavedArticles(uniqueArticles);
 
-      const allKeywords = uniqueArticles.flatMap((article) => article.keywords);
+      // Retrieve the unique keywords from the saved articles
+      const allKeywords = uniqueArticles.flatMap(
+        (article) => article.keywords || []
+      );
+      console.log("All keywords:", allKeywords); // Add this to debug keywords
       setKeywords([...new Set(allKeywords)]);
     }
   }, []);
@@ -48,6 +65,12 @@ function SavedArticles({ currentUser }) {
     // Update the saved article URLs as well
     const savedArticleUrls = updatedArticles.map((article) => article.url);
     localStorage.setItem("savedArticles", JSON.stringify(savedArticleUrls));
+
+    // Recalculate keywords and update the state
+    const allKeywords = updatedArticles.flatMap(
+      (article) => article.keywords || []
+    );
+    setKeywords([...new Set(allKeywords)]); // Update keywords state
   };
 
   return (
@@ -69,7 +92,8 @@ function SavedArticles({ currentUser }) {
                   lineHeight: "24px",
                 }}
               >
-                {keywords.join(", ")}
+                {displayKeywords(keywords)}{" "}
+                {/* Call displayKeywords instead of join */}
               </span>
             </p>
           )}

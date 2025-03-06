@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import About from "../../components/About/About";
 import NotFoundImage from "../../assets/not-found.png";
 
-function Main({ articles, loading, error, searched, isLoggedIn }) {
+function Main({ articles, loading, error, searched, isLoggedIn, keywords }) {
   const [visibleCount, setVisibleCount] = useState(3);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    // Ensure search query and keywords are properly set
+    setSearchQuery(keywords);
+  }, [keywords]);
 
   if (loading) return <p>Loading articles...</p>;
 
@@ -25,6 +31,7 @@ function Main({ articles, loading, error, searched, isLoggedIn }) {
                 key={article._id}
                 article={article}
                 isLoggedIn={isLoggedIn}
+                keywords={searchQuery}
               />
             ))}
           </ul>

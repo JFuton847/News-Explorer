@@ -70,7 +70,7 @@ export function getArticlesByUrls(urls) {
   ).then((articles) => articles.filter((article) => article !== null));
 }
 
-export function saveArticle(article) {
+export function saveArticle(article, searchKeywords) {
   return new Promise((resolve, reject) => {
     const sourceName = article.source?.name || "Unknown Source"; // Handle missing source.name
     if (
@@ -78,7 +78,7 @@ export function saveArticle(article) {
       !article.title ||
       !article.imageUrl ||
       !article.description ||
-      !article.publishedAt
+      !article.date
     ) {
       console.error("Article object is missing required properties:", article);
       reject(new Error("Article object is missing required properties"));
@@ -90,8 +90,9 @@ export function saveArticle(article) {
         title: article.title,
         imageUrl: article.imageUrl,
         description: article.description,
-        date: article.publishedAt,
-        source: sourceName, // Use the defaulted or actual source name
+        date: article.date || article.publishedAt,
+        source: sourceName,
+        keywords: searchKeywords || [], // Use the search term as the keyword
       });
     }
   });
