@@ -6,7 +6,6 @@
   padding: 32px 0 28px;
   background-image: url(../../assets/background-image.png);
   padding: 26px 104px;
-  border-bottom: 1px solid #c4c4c4;
 }
 
 .header__container {
@@ -104,6 +103,7 @@
   width: 608px;
   height: 128px;
   margin: 0;
+  padding-top: 55px;
 }
 
 .header__subheader-text {

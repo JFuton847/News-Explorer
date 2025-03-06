@@ -21,14 +21,15 @@ function Header({
     ? logoutButtonOther
     : logoutButton;
 
-  const isHomePage = !isSavedArticlesPage;
-
   return (
     <header
       className="header"
       style={{
         backgroundColor: isSavedArticlesPage ? "rgba(255, 255, 255, 1)" : "", // Conditionally set background color
         backgroundImage: isSavedArticlesPage ? "none" : "", // Remove the background image
+        borderBottom: isSavedArticlesPage
+          ? "1px solid #D1D2D6"
+          : "1px solid #FFFFFF",
       }}
     >
       <div className="header__container">
