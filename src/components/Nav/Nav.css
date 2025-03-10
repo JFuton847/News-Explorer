@@ -19,7 +19,7 @@
   line-height: 24px;
   font-family: "Roboto", "Inter", sans-serif;
   cursor: pointer;
-  padding: 0;
+  padding: 23px;
   transition: color 0.3s, border-bottom 0.3s;
   border-bottom: 2px solid transparent;
   text-decoration: none;
@@ -27,6 +27,15 @@
 
 .nav__link_active {
   border-bottom: 2px solid white;
+}
+
+.nav__link_location_home {
+  color: rgba(182, 188, 191, 1); /* Color for Home link on home page */
+}
+
+.nav__link_location_saved-articles {
+  color: #1a1b22; /* Color for Saved Articles link on saved articles page */
+  border-bottom: 2px solid #d1d2d6; /* Border for saved articles link */
 }
 
 /* Logout Button */

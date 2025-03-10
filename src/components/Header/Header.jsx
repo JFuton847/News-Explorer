@@ -28,13 +28,17 @@ function Header({
       style={{
         backgroundColor: isSavedArticlesPage ? "rgba(255, 255, 255, 1)" : "",
         backgroundImage: isSavedArticlesPage ? "none" : "",
-        borderBottom: isSavedArticlesPage
-          ? "1px solid #D1D2D6" // border for saved articles page
-          : "1px solid #FFFFFF", // border for home page
-        paddingBottom: "20px", // Just to ensure it has some padding, adjust as needed
       }}
     >
-      <div className="header__container">
+      <div
+        className="header__container"
+        style={{
+          borderBottom:
+            location.pathname === "/saved-articles"
+              ? "1px solid #D1D2D6" // border for saved articles page
+              : "1px solid #FFFFFF", // border for home page
+        }}
+      >
         <h1
           className="nav__header-name"
           style={{
