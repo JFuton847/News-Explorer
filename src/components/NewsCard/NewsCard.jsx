@@ -135,9 +135,14 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
         <h2 className="newsCard__card-title">{article.title}</h2>
         <p className="newsCard__card-article-text">{article.description}</p>
         <p className="newsCard__card-source-text">{article.source}</p>
-        {isSavedPage && (
+        {isSavedPage && keywords.length > 0 && (
           <div className="newsCard__card-keyword">
-            {keywords && keywords.length > 0 && <span>{keywords[0]}</span>}
+            {keywords.map((keyword, index) => (
+              <span key={index}>
+                {keyword}
+                {index < keywords.length - 1 && ", "}
+              </span>
+            ))}
           </div>
         )}
       </div>

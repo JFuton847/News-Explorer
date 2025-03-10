@@ -105,7 +105,7 @@ function SavedArticles({ currentUser }) {
                 article={article}
                 isSavedPage={true}
                 onDelete={handleDeleteArticle}
-                keywords={keywords}
+                keywords={article.keywords}
               />
             ))}
           </ul>
