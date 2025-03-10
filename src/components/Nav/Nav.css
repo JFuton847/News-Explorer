@@ -1,0 +1,82 @@
+/* Navigation styles */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.nav__header-name {
+  font-family: "Roboto-Slab", "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.nav__link {
+  background: none;
+  border: none;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto", "Inter", sans-serif;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.3s, border-bottom 0.3s;
+  border-bottom: 2px solid transparent;
+  text-decoration: none;
+}
+
+.nav__link_active {
+  border-bottom: 2px solid white;
+}
+
+/* Logout Button */
+.nav__logout {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 100px;
+  color: white;
+  padding: 0 20px;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto", "inter", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  min-width: 112px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Logout image */
+.nav__logout-image {
+  width: 17.41px;
+  height: 16px;
+  margin-left: 22px;
+}
+
+/* Login Button */
+.nav__login {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 100px;
+  color: white;
+  /* padding: 8px 20px; */
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto", "Inter", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 176px;
+  height: 48px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}

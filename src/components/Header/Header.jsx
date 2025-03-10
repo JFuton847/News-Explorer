@@ -1,9 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import logoutButton from "../../assets/logout-button.png";
 import logoutButtonOther from "../../assets/logout-button-other.png";
 import "./Header.css";
+import "../Nav/Nav.css";
 
 function Header({
   onSearch,
@@ -15,8 +16,8 @@ function Header({
   isSavedArticlesPage,
 }) {
   const navigate = useNavigate();
+  const location = useLocation(); // For determining active link
 
-  // Conditionally set the logout button image based on the saved articles page
   const logoutButtonImage = isSavedArticlesPage
     ? logoutButtonOther
     : logoutButton;
@@ -25,70 +26,99 @@ function Header({
     <header
       className="header"
       style={{
-        backgroundColor: isSavedArticlesPage ? "rgba(255, 255, 255, 1)" : "", // Conditionally set background color
-        backgroundImage: isSavedArticlesPage ? "none" : "", // Remove the background image
+        backgroundColor: isSavedArticlesPage ? "rgba(255, 255, 255, 1)" : "",
+        backgroundImage: isSavedArticlesPage ? "none" : "",
         borderBottom: isSavedArticlesPage
-          ? "1px solid #D1D2D6"
-          : "1px solid #FFFFFF",
+          ? "1px solid #D1D2D6" // border for saved articles page
+          : "1px solid #FFFFFF", // border for home page
+        paddingBottom: "20px", // Just to ensure it has some padding, adjust as needed
       }}
     >
       <div className="header__container">
         <h1
-          className="header__header-name"
+          className="nav__header-name"
           style={{
-            color: isSavedArticlesPage ? "#1a1b22" : "", // Change color when on SavedArticles page
+            color: isSavedArticlesPage ? "#1a1b22" : "",
+            cursor: "pointer", // Add a pointer cursor to indicate it's clickable
           }}
+          onClick={() => navigate("/")}
         >
           NewsExplorer
         </h1>
-        <div className="header__user-container">
-          <button
-            className="header__home-button"
-            onClick={() => navigate("/")}
+
+        <nav className="nav">
+          <a
+            href="#"
+            className={`nav__link ${
+              location.pathname === "/" ? "nav__link_active" : ""
+            }`}
             style={{
-              color: isSavedArticlesPage ? "#1a1b22" : "", // Change color when on SavedArticles page
+              color: isSavedArticlesPage ? "#1a1b22" : "rgba(182, 188, 191, 1)",
             }}
+            onClick={() => navigate("/")}
           >
             Home
-          </button>
+          </a>
 
-          {isLoggedIn ? (
+          {isLoggedIn && (
             <>
-              <button
-                className="header__saved-articles-button"
-                onClick={() => navigate("/saved-articles")}
+              <a
+                href="#"
+                className={`nav__link ${
+                  location.pathname === "/saved-articles"
+                    ? "nav__link_active"
+                    : ""
+                }`}
                 style={{
-                  color: isSavedArticlesPage ? "#1a1b22" : "", // Change color when on SavedArticles page
+                  color: isSavedArticlesPage
+                    ? "#1a1b22"
+                    : "rgba(182, 188, 191, 1)",
+                  borderBottom:
+                    location.pathname === "/saved-articles"
+                      ? "2px solid #1a1b22"
+                      : "2px solid transparent",
                 }}
+                onClick={() => navigate("/saved-articles")}
               >
                 Saved articles
-              </button>
-              <button
-                className="header__logout-button"
+              </a>
+              <a
+                href="#"
+                className="nav__logout"
                 onClick={handleLogout}
                 style={{
-                  color: isSavedArticlesPage ? "#1a1b22" : "", // Change color when on SavedArticles page
-                  border: isSavedArticlesPage ? "1px solid #1a1b22" : "", // Change border color when on SavedArticles page
+                  color: isSavedArticlesPage ? "#1a1b22" : "",
+                  border: isSavedArticlesPage ? "1px solid #1a1b22" : "",
                 }}
               >
                 {currentUser?.name || "Anonymous"}
                 <img
-                  src={logoutButtonImage} // Use the conditional image path here
+                  src={logoutButtonImage}
                   alt="Logout"
-                  className="header__logout-button-image"
+                  className="nav__logout-image"
                 />
-              </button>
+              </a>
             </>
-          ) : (
-            <button
-              className="header__login-button"
+          )}
+
+          {!isLoggedIn && (
+            <a
+              href="#"
+              className="nav__login"
               onClick={() => setActiveModal("login")}
+              style={{
+                color: isSavedArticlesPage ? "#1a1b22" : "white",
+                border: isSavedArticlesPage
+                  ? "1px solid #1a1b22"
+                  : "1px solid white",
+              }}
             >
               Sign in
-            </button>
+            </a>
           )}
-        </div>
+        </nav>
       </div>
+
       {!isSavedArticlesPage && (
         <>
           <h2 className="header__header-text">What's going on in the world?</h2>
