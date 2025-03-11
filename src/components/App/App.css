@@ -5,7 +5,14 @@
 }
 
 .App__content {
-  max-width: 1360px;
+  max-width: 1440px;
+  /* max-width: 100%; */
   margin: 0 auto;
-  padding: 0 20px;
+  /* padding: 0; */
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    padding: 0;
+  }
 }

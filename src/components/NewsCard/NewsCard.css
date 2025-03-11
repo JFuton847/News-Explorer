@@ -3,7 +3,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   justify-content: center;
-  padding: 62px 106px 62px 102px;
+  padding: 62px 104px 64px 104px;
   background-color: rgba(245, 246, 247, 1);
   max-width: 100%;
   margin: 0 auto;
@@ -266,4 +266,19 @@
   border-radius: 10px;
   white-space: nowrap;
   z-index: 10;
+}
+
+@media screen and (max-width: 768px) {
+  .newsCard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    justify-content: center;
+    padding: 62px 106px 64px 102px;
+    background-color: rgba(245, 246, 247, 1);
+    max-width: 100%;
+    margin: 0 auto;
+    list-style-type: none;
+    box-sizing: border-box;
+  }
 }

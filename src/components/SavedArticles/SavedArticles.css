@@ -1,7 +1,7 @@
 .savedArticles {
   display: flex;
   flex-direction: column;
-  min-height: 75vh;
+  min-height: 78vh;
 }
 
 .savedArticles__container {
