@@ -3,7 +3,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   justify-content: center;
-  padding: 62px 104px 64px 104px;
+  padding: 62px 104px 0;
   background-color: rgba(245, 246, 247, 1);
   max-width: 100%;
   margin: 0 auto;
@@ -120,7 +120,7 @@
   height: 40px;
   border-radius: 8px;
   border: 2px solid rgba(255, 255, 255, 1);
-  background-color: transparent;
+  background-color: #ffffff;
   background-size: 14px 19px;
   background-position: center;
   background-repeat: no-repeat;
@@ -138,19 +138,17 @@
 
 .newsCard__card-save-button:hover {
   background-image: url("../../assets/save-button-hover.svg");
-  opacity: 0.7;
 }
 
 .newsCard__card-save-button.active:hover {
   background-image: url("../../assets/save-button-active.svg");
-  opacity: 1; /* Keep the active button as is while hovering */
 }
 
 .newsCard__card-delete-button {
   background-image: url("../../assets/delete-button.png");
   border: 2px solid rgba(255, 255, 255, 1);
   background-color: #ffffff;
-  background-size: 14px 19px;
+  background-size: 18px 19px;
   background-position: center;
   background-repeat: no-repeat;
   border: none;
@@ -168,6 +166,27 @@
   /* opacity: 0.6; */
   cursor: pointer;
   background-image: url("../../assets/delete-button-hover.png");
+}
+
+.newsCard__card-keyword {
+  font-family: "Roboto", "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 14.06px;
+  background-color: #ffffff;
+  color: #1a1b22;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  align-content: center;
+  margin: 0;
+  padding: 13.5px 20px;
+  border-radius: 10px;
+  white-space: nowrap;
+  z-index: 10;
+  text-overflow: ellipsis;
+  max-width: 180px;
+  overflow: hidden;
 }
 
 .newsCard__card-tooltip {
@@ -192,6 +211,7 @@
 }
 
 .newsCard__show-more-button {
+  border: none;
   border-radius: 80px;
   background-color: #ffffff;
   font-family: "Roboto", "Inter", sans-serif;
@@ -250,35 +270,79 @@
   padding-bottom: 31.5px;
 }
 
-.newsCard__card-keyword {
-  font-family: "Roboto", "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 14.06px;
-  background-color: #ffffff;
-  color: #1a1b22;
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  align-content: center;
-  margin: 0;
-  padding: 13.5px 20px;
-  border-radius: 10px;
-  white-space: nowrap;
-  z-index: 10;
-}
-
 @media screen and (max-width: 768px) {
   .newsCard {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 8px;
-    justify-content: center;
-    padding: 62px 106px 64px 102px;
+    padding: 32px 40px 0;
     background-color: rgba(245, 246, 247, 1);
     max-width: 100%;
     margin: 0 auto;
     list-style-type: none;
     box-sizing: border-box;
+  }
+  .newsCard__search-results-header {
+    padding: 40px 0 2px 40px;
+  }
+  .newsCard__card {
+    min-height: 420px;
+    max-width: 224px;
+  }
+  .newsCard__content {
+    margin-left: 16px;
+    width: 192px;
+    max-width: calc(100% - 32px);
+  }
+  .newsCard__card-date-text {
+    margin: 15px 0 0 0;
+  }
+
+  .newsCard__card-title {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 24px;
+    margin-top: 12px;
+  }
+
+  .newsCard__card-source-text {
+    margin: 0;
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+  }
+  .newsCard__card-delete-button {
+    background-size: 18px 19px;
+    position: absolute;
+    border-radius: 8px;
+    top: 8px;
+    right: 8px;
+  }
+  .newsCard__card-keyword {
+    font-family: "Roboto", "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 24px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    padding: 8px 20px;
+    text-overflow: ellipsis;
+    max-width: 80px;
+    overflow: hidden;
+  }
+  .newsCard__card-tooltip {
+    visibility: hidden;
+  }
+  .newsCard__show-more-button {
+    border-radius: 80px;
+    outline: none;
+    background-color: #ffffff;
+    width: 240px;
+    height: 56px;
+  }
+  .newsCard__show-more-button-container {
+    background-color: #f5f6f7;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 32px 0 40px;
   }
 }
