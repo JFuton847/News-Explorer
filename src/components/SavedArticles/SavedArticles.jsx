@@ -44,7 +44,6 @@ function SavedArticles({ currentUser }) {
       const allKeywords = uniqueArticles.flatMap(
         (article) => article.keywords || []
       );
-      console.log("All keywords:", allKeywords); // Add this to debug keywords
       setKeywords([...new Set(allKeywords)]);
     }
   }, []);

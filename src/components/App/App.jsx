@@ -156,6 +156,7 @@ function App() {
                 loading={loading}
                 error={error}
                 searched={searched}
+                searchQuery={searchQuery}
                 isLoggedIn={isLoggedIn}
                 keywords={keywords}
               />

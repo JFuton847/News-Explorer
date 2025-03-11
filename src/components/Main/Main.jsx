@@ -3,14 +3,22 @@ import NewsCard from "../../components/NewsCard/NewsCard";
 import About from "../../components/About/About";
 import NotFoundImage from "../../assets/not-found.png";
 
-function Main({ articles, loading, error, searched, isLoggedIn, keywords }) {
+function Main({
+  articles,
+  loading,
+  error,
+  searched,
+  isLoggedIn,
+  keywords,
+  searchQuery,
+}) {
   const [visibleCount, setVisibleCount] = useState(3);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    // Ensure search query and keywords are properly set
-    setSearchQuery(keywords);
-  }, [keywords]);
+  // useEffect(() => {
+  //   // Ensure search query and keywords are properly set
+  //   setSearchQuery(keywords);
+  // }, [keywords]);
 
   if (loading) return <p>Loading articles...</p>;
 
@@ -18,9 +26,13 @@ function Main({ articles, loading, error, searched, isLoggedIn, keywords }) {
     setVisibleCount((prevCount) => prevCount + 6);
   };
 
+  // Debugging logs
+  console.log("searched:", searched);
+  console.log("articles:", articles);
+
   return (
     <main>
-      {searched && (
+      {searchQuery && (
         <h1 className="newsCard__search-results-header">Search results</h1>
       )}
       {articles.length > 0 ? (
@@ -48,7 +60,7 @@ function Main({ articles, loading, error, searched, isLoggedIn, keywords }) {
           )}
         </>
       ) : (
-        searched && (
+        searchQuery && (
           <div className="newsCard__no-results">
             <img
               src={NotFoundImage}

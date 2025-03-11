@@ -3,7 +3,6 @@ import "../../components/NewsCard/NewsCard.css";
 import { saveArticle } from "../../utils/api";
 
 function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
-  console.log("Keywords:", keywords);
   const [savedArticles, setSavedArticles] = useState(new Set());
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltipRef = useRef(null);
