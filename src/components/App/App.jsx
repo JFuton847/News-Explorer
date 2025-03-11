@@ -110,6 +110,7 @@ function App() {
     setIsLoggedIn(false);
     localStorage.removeItem("jwt");
     setCurrentUser(null);
+
     navigate("/");
   };
 

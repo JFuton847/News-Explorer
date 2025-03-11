@@ -7,11 +7,17 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const tooltipRef = useRef(null);
 
+  // Update savedArticles based on login status
   useEffect(() => {
-    const savedArticleIds =
-      JSON.parse(localStorage.getItem("savedArticles")) || [];
-    setSavedArticles(new Set(savedArticleIds));
-  }, []);
+    if (isLoggedIn) {
+      const savedArticleIds =
+        JSON.parse(localStorage.getItem("savedArticles")) || [];
+      setSavedArticles(new Set(savedArticleIds));
+    } else {
+      // Clear saved articles state when logged out so button appears inactive
+      setSavedArticles(new Set());
+    }
+  }, [isLoggedIn]);
 
   const handleSaveClick = (article, e) => {
     e.stopPropagation();
@@ -103,7 +109,7 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
         <>
           <button
             className={`newsCard__card-save-button ${
-              savedArticles.has(article.url) ? "active" : ""
+              isLoggedIn && savedArticles.has(article.url) ? "active" : ""
             }`}
             onClick={(e) => handleSaveClick(article, e)}
             onMouseEnter={() => !isLoggedIn && setShowTooltip(true)}
