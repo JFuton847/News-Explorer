@@ -11,6 +11,7 @@ function Main({
   isLoggedIn,
   keywords,
   searchQuery,
+  isSearchSubmitted,
 }) {
   const [visibleCount, setVisibleCount] = useState(3);
   // const [searchQuery, setSearchQuery] = useState("");
@@ -32,7 +33,7 @@ function Main({
 
   return (
     <main>
-      {searchQuery && (
+      {isSearchSubmitted && searchQuery && (
         <h1 className="newsCard__search-results-header">Search results</h1>
       )}
       {articles.length > 0 ? (
@@ -60,6 +61,7 @@ function Main({
           )}
         </>
       ) : (
+        isSearchSubmitted &&
         searchQuery && (
           <div className="newsCard__no-results">
             <img

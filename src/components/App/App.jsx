@@ -21,6 +21,7 @@ function App() {
   const [loading, setLoading] = useState(false); // Loading state for API call
   const [isRegistrationComplete, setIsRegistrationComplete] = useState(false);
   const [keywords, setKeywords] = useState([]);
+  const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,8 +32,9 @@ function App() {
   };
 
   const handleSearchSubmit = () => {
-    fetchArticles(searchQuery); // Fetch articles when user submits a search
+    fetchArticles(searchQuery); // Fetch articles using the query
     setKeywords([searchQuery]); // Store the search query as the keyword
+    setIsSearchSubmitted(true); // Mark that a search has been submitted
   };
 
   const fetchArticles = async (query) => {
@@ -159,6 +161,7 @@ function App() {
                 searchQuery={searchQuery}
                 isLoggedIn={isLoggedIn}
                 keywords={keywords}
+                isSearchSubmitted={isSearchSubmitted}
               />
             }
           />
