@@ -124,6 +124,35 @@
   display: flex;
   justify-content: center;
   margin-top: 88px;
-  margin-top: 88px;
   margin-bottom: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    background-position: center;
+  }
+  .header__container {
+    padding: 0 40px;
+  }
+  .header__header-text {
+    font-size: 36px;
+    line-height: 40px;
+    width: 385px;
+    height: 80px;
+    margin: 0;
+    padding: 38px 220px 0 163px;
+  }
+  .header__subheader-text {
+    margin: 16px 0 0 0;
+    padding: 160 0 156px;
+    width: 452px;
+    height: 48px;
+  }
+  .header__search {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
 }

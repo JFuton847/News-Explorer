@@ -42,3 +42,21 @@
 .searchForm__search-button:active {
   background-color: #2a65cc;
 }
+
+@media screen and (max-width: 768px) {
+  .searchForm__search-container {
+    width: 448px;
+    height: 56px;
+    border-radius: 100px;
+    /* overflow: hidden; */
+    box-sizing: border-box;
+  }
+  .searchForm__search-button {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    cursor: pointer;
+    width: 160px;
+    height: 58px;
+  }
+}

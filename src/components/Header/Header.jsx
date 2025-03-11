@@ -127,7 +127,8 @@ function Header({
         <>
           <h2 className="header__header-text">What's going on in the world?</h2>
           <p className="header__subheader-text">
-            Find the latest news on any topic and save them in your account
+            Find the latest news on any topic and save them in your personal
+            account
           </p>
           <div className="header__search">
             <SearchForm onSearch={onSearch} onSearchSubmit={onSearchSubmit} />
