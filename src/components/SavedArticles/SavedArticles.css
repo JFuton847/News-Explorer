@@ -22,6 +22,7 @@
   font-size: 18px;
   line-height: 24px;
   color: rgba(26, 27, 34, 0.5);
+  margin: 40px 0 0;
 }
 
 .savedArticles__header-text {
@@ -30,6 +31,7 @@
   font-size: 40px;
   line-height: 46px;
   color: #1a1b22;
+  margin: 28px 0 0;
 }
 
 .savedArticles__keywords-text {
@@ -38,6 +40,7 @@
   font-size: 18px;
   line-height: 24px;
   color: #1a1b22;
+  margin: 30px 0 56px;
 }
 
 .savedArticles__keywords-value {
@@ -45,4 +48,22 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+}
+
+@media screen and (max-width: 768px) {
+  .savedArticles__text-container {
+    padding-left: 40px;
+  }
+  .savedArticles__pageName-text {
+    font-size: 14px;
+    margin: 24px 0 0;
+  }
+  .savedArticles__header-text {
+    font-size: 30px;
+    line-height: 34px;
+    margin: 16px 0 0;
+  }
+  .savedArticles__keywords-text {
+    margin: 16px 0 32px;
+  }
 }
