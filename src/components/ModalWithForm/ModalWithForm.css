@@ -229,8 +229,8 @@
 @media screen and (max-width: 768px) {
   .modal {
     /* Explicitly set full viewport dimensions */
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: auto;
   }
 
   .modal__content {
