@@ -1,32 +1,22 @@
 .footer {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: space-between;
   background-color: rgba(255, 255, 255, 1);
   color: rgba(182, 188, 191, 1);
   padding: 32px 0 26px;
   font-family: "Roboto", "Inter", sans-serif;
   font-weight: 400;
-}
-
-.footer__content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: calc(100% - 208px);
-  margin: 0 auto;
+  margin: 0;
 }
 
 .footer__text {
   font-size: 16px;
   line-height: 22px;
+  margin-left: 104px;
 }
 
 .footer__nav-container {
-  display: flex;
-  align-items: center;
-  margin-left: 524px;
+  margin-right: 104px;
 }
 
 .footer__home-button {
@@ -67,25 +57,124 @@
   background-size: cover 20.21px 19.71px;
 }
 
+@media screen and (max-width: 980px) {
+  .footer {
+    padding: 24px 0 18px;
+  }
+  .footer__text {
+    margin-left: 30px;
+  }
+  .footer__nav-container {
+    margin-right: 30px;
+  }
+  .footer__home-button {
+    margin-right: 20px;
+  }
+  .footer__tripleTen-button {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .footer__github-button {
+    margin-left: 20px;
+    margin-right: 12px;
+  }
+  .footer__facebook-button {
+    margin-left: 13px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .footer {
     padding: 24px 0 18px;
   }
-  .footer__content {
-    width: calc(100% - 80px);
+  .footer__text {
+    margin-left: 40px;
   }
   .footer__nav-container {
-    display: flex;
-    align-items: center;
-    margin-left: 113px;
+    margin-right: 40px;
+  }
+  .footer__home-button {
+    margin-right: 20px;
+  }
+  .footer__tripleTen-button {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .footer__github-button {
+    margin-left: 20px;
+    margin-right: 12px;
   }
   .footer__facebook-button {
-    background-image: url("../../assets/fb.svg");
-    width: 24px;
-    height: 24px;
-    margin-left: 24px;
-    border: none;
-    background-color: transparent;
-    background-size: cover 20px 20px;
+    margin-left: 13px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .footer {
+    padding: 24px 0 18px;
+  }
+  .footer__text {
+    margin-left: 12px;
+  }
+  .footer__nav-container {
+    margin-right: 12px;
+  }
+  .footer__home-button {
+    margin-right: 12px;
+  }
+  .footer__tripleTen-button {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+  .footer__github-button {
+    margin-left: 12px;
+    margin-right: 6px;
+  }
+  .footer__facebook-button {
+    margin-left: 7px;
+  }
+}
+
+@media screen and (max-width: 652px) and (min-width: 320px) {
+  .footer {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr); /* Use 5 rows instead of 6 */
+    grid-template-areas:
+      "home . . github facebook"
+      ". . . . ."
+      "tripleTen . . . ."
+      ". . . . ."
+      "text text text text text";
+    padding: 24px 16px 18px;
+  }
+
+  /* Make the nav container's children participate directly in the grid */
+  .footer__nav-container {
+    display: contents;
+  }
+
+  /* Assign each button to its grid area */
+  .footer__home-button {
+    grid-area: home;
+  }
+
+  .footer__tripleTen-button {
+    grid-area: tripleTen;
+  }
+
+  .footer__github-button {
+    grid-area: github;
+  }
+
+  .footer__facebook-button {
+    grid-area: facebook;
+  }
+
+  /* Footer text spans the entire bottom row */
+  .footer__text {
+    padding: 0 16px;
+    grid-area: text;
+    /* No need to set grid-row: 5 since grid-area already places it in row 5 */
   }
 }

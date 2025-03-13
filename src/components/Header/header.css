@@ -137,10 +137,10 @@
   .header__header-text {
     font-size: 36px;
     line-height: 40px;
-    width: 385px;
+    max-width: 385px;
     height: 80px;
-    margin: 0;
-    padding: 38px 220px 0 163px;
+    margin: 38px auto 0;
+    padding: 0;
   }
   .header__subheader-text {
     margin: 16px 0 0 0;
