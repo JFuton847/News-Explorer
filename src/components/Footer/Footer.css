@@ -10,13 +10,32 @@
 }
 
 .footer__text {
+  /* Move this element to the left by giving it a lower order */
+  order: -1;
   font-size: 16px;
   line-height: 22px;
   margin-left: 104px;
 }
 
 .footer__nav-container {
+  /* Remain with default order so it appears to the right */
+  order: 0;
   margin-right: 104px;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Other existing desktop styles remain unchanged */
+.footer__text-links {
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+}
+
+.footer__icon-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .footer__home-button {
@@ -60,11 +79,19 @@
 @media screen and (max-width: 980px) {
   .footer {
     padding: 24px 0 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
   .footer__text {
+    order: 1;
     margin-left: 30px;
   }
   .footer__nav-container {
+    order: 2;
+    display: flex;
+    flex-direction: row;
     margin-right: 30px;
   }
   .footer__home-button {
@@ -86,12 +113,20 @@
 @media screen and (max-width: 768px) {
   .footer {
     padding: 24px 0 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
   .footer__text {
+    order: 1;
     margin-left: 40px;
   }
   .footer__nav-container {
+    order: 2;
     margin-right: 40px;
+    display: flex;
+    flex-direction: row;
   }
   .footer__home-button {
     margin-right: 20px;
@@ -112,12 +147,20 @@
 @media screen and (max-width: 730px) {
   .footer {
     padding: 24px 0 18px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
   .footer__text {
+    order: 1;
     margin-left: 12px;
   }
   .footer__nav-container {
+    order: 2;
     margin-right: 12px;
+    display: flex;
+    flex-direction: row;
   }
   .footer__home-button {
     margin-right: 12px;
@@ -137,44 +180,69 @@
 
 @media screen and (max-width: 652px) and (min-width: 320px) {
   .footer {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr); /* Use 5 rows instead of 6 */
-    grid-template-areas:
-      "home . . github facebook"
-      ". . . . ."
-      "tripleTen . . . ."
-      ". . . . ."
-      "text text text text text";
-    padding: 24px 16px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 22px;
+    /* text-align: center; */
   }
 
-  /* Make the nav container's children participate directly in the grid */
+  /* Arrange the nav container in a row so its children (text-links group and icon-links group) are side by side */
   .footer__nav-container {
-    display: contents;
+    display: flex;
+    order: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 16px;
   }
 
-  /* Assign each button to its grid area */
-  .footer__home-button {
-    grid-area: home;
+  /* Stack the text links (Home above TripleTen) in a column */
+  .footer__text-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 16px;
   }
 
-  .footer__tripleTen-button {
-    grid-area: tripleTen;
+  /* Keep the icon links in a row */
+  .footer__icon-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 80px;
   }
 
-  .footer__github-button {
-    grid-area: github;
-  }
-
-  .footer__facebook-button {
-    grid-area: facebook;
-  }
-
-  /* Footer text spans the entire bottom row */
+  /* Styling the footer text to span the entire width */
   .footer__text {
-    padding: 0 16px;
-    grid-area: text;
-    /* No need to set grid-row: 5 since grid-area already places it in row 5 */
+    width: 100%;
+    order: 0;
+    /* text-align: center; */
+    margin-top: 10px;
+  }
+  .footer__home-button {
+    line-height: 48px;
+  }
+  .footer__tripleTen-button {
+    margin: 35px 0 0;
+    padding: 0;
+    line-height: 48px;
+  }
+  .footer__github-button {
+    height: 20px;
+    width: 20px;
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+  }
+  .footer__facebook-button {
+    background-image: url("../../assets/fb-mobile.svg");
+    width: 20px;
+    height: 20px;
+    margin-left: 26px;
+    border: none;
+    /* background-color: transparent; */
+    background-size: cover;
   }
 }
