@@ -5,6 +5,14 @@
   gap: 42px;
 }
 
+.nav__links {
+  display: flex;
+  align-items: center;
+}
+.nav__menu-button {
+  display: none;
+}
+
 .nav__header-name {
   font-family: "Roboto-Slab", "Inter", sans-serif;
   font-weight: 700;
@@ -20,7 +28,9 @@
   font-weight: 500;
   font-family: "Roboto", "Inter", sans-serif;
   cursor: pointer;
-  padding: 23px;
+  padding-top: 23px;
+  padding-bottom: 23px;
+  margin-left: 76px;
   transition: color 0.3s, border-bottom 0.3s;
   border-bottom: 2px solid transparent;
   text-decoration: none;
@@ -61,6 +71,7 @@
   display: flex;
   align-items: center;
   text-decoration: none;
+  margin-left: 42px;
 }
 
 /* Logout image */
@@ -77,6 +88,7 @@
   border-radius: 100px;
   color: white;
   /* padding: 8px 20px; */
+  margin-left: 42px;
   font-size: 18px;
   line-height: 24px;
   font-family: "Roboto", "Inter", sans-serif;
@@ -122,4 +134,79 @@
 }
 
 @media screen and (max-width: 620px) {
+  /* Hide Desktop Navigation */
+  .nav__links {
+    display: none;
+  }
+
+  /* Mobile Menu Button */
+  .nav__menu-button {
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 30;
+  }
+
+  .nav__menu-line {
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    transition: transform 0.3s;
+  }
+
+  .nav__menu-button_open .nav__menu-line:nth-child(1) {
+    transform: translateY(1px) rotate(45deg);
+    position: absolute;
+  }
+
+  .nav__menu-button_open .nav__menu-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav__menu-button_open .nav__menu-line:nth-child(3) {
+    transform: translateY(1px) rotate(-45deg);
+    position: absolute;
+  }
+
+  /* Mobile Menu Links */
+  .nav__links_open {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 0;
+    z-index: 20;
+    overflow-y: auto;
+  }
+  .nav__link {
+    background: none;
+    border: none;
+    font-size: 36px;
+    line-height: 24px;
+    font-weight: 500;
+    font-family: "Roboto", "Inter", sans-serif;
+    cursor: pointer;
+    padding: 23px;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    padding-top: 100px;
+  }
+
+  .nav__link_active {
+    border-bottom: 2px solid white;
+  }
 }
