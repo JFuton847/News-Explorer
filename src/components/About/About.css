@@ -57,7 +57,7 @@
     justify-content: center;
   }
   .about__container {
-    width: 100%;
+    width: 80%;
     margin-left: 40px;
     gap: 32px;
   }
@@ -96,6 +96,7 @@
     justify-content: center;
     gap: 56px;
     margin-left: 0;
+    width: 100%;
   }
   .about__content {
     justify-content: center;
