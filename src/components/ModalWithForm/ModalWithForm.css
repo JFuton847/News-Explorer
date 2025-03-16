@@ -239,3 +239,27 @@
     max-height: 90vh;
   }
 }
+
+@media screen and (max-width: 522px) {
+  .modal {
+    width: 100%;
+    height: auto;
+  }
+
+  .modal__content {
+    width: 80%;
+    min-height: 380px;
+    height: auto;
+    max-height: 90vh;
+  }
+  .modal__submit {
+    width: 75%;
+    height: 64px;
+    margin-top: 0px;
+  }
+  .modal__close {
+    position: absolute;
+    top: -46px;
+    right: 0;
+  }
+}
