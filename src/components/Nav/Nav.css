@@ -209,7 +209,7 @@
     margin-left: 0;
     font-size: 18px;
     line-height: 24px;
-    width: 264px;
+    width: 90%;
     height: 72px;
   }
   .nav__logout {
@@ -245,7 +245,7 @@
     margin-left: 0;
     font-size: 18px;
     line-height: 24px;
-    width: 132px;
-    height: 36px;
+    width: 80%;
+    height: 56px;
   }
 }
