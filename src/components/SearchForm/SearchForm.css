@@ -60,3 +60,23 @@
     height: 58px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .searchForm__search-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+    gap: 16px;
+  }
+  .searchForm {
+    position: relative;
+    width: 90%;
+    height: 56px;
+  }
+  .searchForm__search-button {
+    position: relative;
+    width: 100%;
+    height: 56px;
+  }
+}

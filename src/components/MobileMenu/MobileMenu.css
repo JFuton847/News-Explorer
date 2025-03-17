@@ -1,0 +1,44 @@
+/* Mobile menu container */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  background-color: #fff;
+  transition: height 0.3s ease;
+  z-index: 1000;
+}
+
+/* When open, set height to 230px */
+.mobile-menu.open {
+  height: 230px;
+}
+
+/* Menu list styling */
+.mobile-menu-list {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-menu-item {
+  margin: 10px 0;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Overlay for the rest of the screen */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 230px; /* starts right below the open menu */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+}

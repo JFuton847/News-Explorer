@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import logoutButton from "../../assets/logout-button.png";
 import logoutButtonOther from "../../assets/logout-button-other.png";
+import hamburgerIconBlack from "../../assets/hamburger-icon-black.svg";
+import hamburgerIconWhite from "../../assets/hamburger-icon-white.svg";
+import MobileMenu from "../../components/MobileMenu/MobileMenu";
 import "./Header.css";
 import "../Nav/Nav.css";
 
@@ -16,16 +19,15 @@ function Header({
   isSavedArticlesPage,
 }) {
   const navigate = useNavigate();
-  const location = useLocation(); // For determining active link
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const location = useLocation();
+
+  // Mobile menu state
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   const logoutButtonImage = isSavedArticlesPage
     ? logoutButtonOther
     : logoutButton;
-
-  const toggleMenu = () => {
-    setIsMenuOpen((prev) => !prev);
-  };
 
   return (
     <header
@@ -40,109 +42,107 @@ function Header({
         style={{
           borderBottom:
             location.pathname === "/saved-articles"
-              ? "1px solid #D1D2D6" // border for saved articles page
-              : "1px solid #FFFFFF", // border for home page
+              ? "1px solid #D1D2D6"
+              : "1px solid #FFFFFF",
         }}
       >
         <h1
           className="nav__header-name"
           style={{
             color: isSavedArticlesPage ? "#1a1b22" : "",
-            cursor: "pointer", // Add a pointer cursor to indicate it's clickable
+            cursor: "pointer",
           }}
           onClick={() => navigate("/")}
         >
           NewsExplorer
         </h1>
-
-        <nav className="nav">
-          <button
-            className={`nav__menu-button ${
-              isMenuOpen ? "nav__menu-button_open" : ""
+        {/* Standard nav links for larger screens */}
+        <div className="nav__links">
+          <a
+            href="#"
+            className={`nav__link ${
+              location.pathname === "/" ? "nav__link_active" : ""
             }`}
-            onClick={toggleMenu}
+            style={{
+              color: isSavedArticlesPage ? "#1a1b22" : "rgba(182, 188, 191, 1)",
+            }}
+            onClick={() => navigate("/")}
           >
-            <span className="nav__menu-line"></span>
-            <span className="nav__menu-line"></span>
-            <span className="nav__menu-line"></span>
-          </button>
+            Home
+          </a>
 
-          <div className={`nav__links ${isMenuOpen ? "nav__links_open" : ""}`}>
-            <a
-              href="#"
-              className={`nav__link ${
-                location.pathname === "/" ? "nav__link_active" : ""
-              }`}
-              style={{
-                color: isSavedArticlesPage
-                  ? "#1a1b22"
-                  : "rgba(182, 188, 191, 1)",
-              }}
-              onClick={() => navigate("/")}
-            >
-              Home
-            </a>
-
-            {isLoggedIn && (
-              <>
-                <a
-                  href="#"
-                  className={`nav__link ${
-                    location.pathname === "/saved-articles"
-                      ? "nav__link_active"
-                      : ""
-                  }`}
-                  style={{
-                    color: isSavedArticlesPage
-                      ? "#1a1b22"
-                      : "rgba(182, 188, 191, 1)",
-                    borderBottom:
-                      location.pathname === "/saved-articles"
-                        ? "2px solid #1a1b22"
-                        : "2px solid transparent",
-                  }}
-                  onClick={() => navigate("/saved-articles")}
-                >
-                  Saved articles
-                </a>
-                <a
-                  href="#"
-                  className="nav__logout"
-                  onClick={handleLogout}
-                  style={{
-                    color: isSavedArticlesPage ? "#1a1b22" : "",
-                    border: isSavedArticlesPage ? "1px solid #1a1b22" : "",
-                  }}
-                >
-                  {currentUser?.name || "Anonymous"}
-                  <img
-                    src={logoutButtonImage}
-                    alt="Logout"
-                    className="nav__logout-image"
-                  />
-                </a>
-              </>
-            )}
-
-            {!isLoggedIn && (
+          {isLoggedIn && (
+            <>
               <a
                 href="#"
-                className="nav__login"
-                onClick={() => setActiveModal("login")}
+                className={`nav__link ${
+                  location.pathname === "/saved-articles"
+                    ? "nav__link_active"
+                    : ""
+                }`}
                 style={{
-                  color: isSavedArticlesPage ? "#1a1b22" : "white",
-                  border: isSavedArticlesPage
-                    ? "1px solid #1a1b22"
-                    : "1px solid white",
+                  color: isSavedArticlesPage
+                    ? "#1a1b22"
+                    : "rgba(182, 188, 191, 1)",
+                  borderBottom:
+                    location.pathname === "/saved-articles"
+                      ? "2px solid #1a1b22"
+                      : "2px solid transparent",
+                }}
+                onClick={() => navigate("/saved-articles")}
+              >
+                Saved articles
+              </a>
+              <a
+                href="#"
+                className="nav__logout"
+                onClick={handleLogout}
+                style={{
+                  color: isSavedArticlesPage ? "#1a1b22" : "",
+                  border: isSavedArticlesPage ? "1px solid #1a1b22" : "",
                 }}
               >
-                Sign in
+                {currentUser?.name || "Anonymous"}
+                <img
+                  src={logoutButtonImage}
+                  alt="Logout"
+                  className="nav__logout-image"
+                />
               </a>
-            )}
-          </div>
-        </nav>
+            </>
+          )}
+
+          {!isLoggedIn && (
+            <a
+              href="#"
+              className="nav__login"
+              onClick={() => setActiveModal("login")}
+              style={{
+                color: isSavedArticlesPage ? "#1a1b22" : "white",
+                border: isSavedArticlesPage
+                  ? "1px solid #1a1b22"
+                  : "1px solid white",
+              }}
+            >
+              Sign in
+            </a>
+          )}
+        </div>
+
+        <div className="header__hamburger-container" onClick={toggleMobileMenu}>
+          <img
+            src={isSavedArticlesPage ? hamburgerIconBlack : hamburgerIconWhite}
+            alt="Menu"
+            className={`hamburger-icon ${
+              isSavedArticlesPage
+                ? "hamburger-icon-black"
+                : "hamburger-icon-white"
+            }`}
+          />
+        </div>
       </div>
 
+      {/* Show search only on non-mobile views */}
       {!isSavedArticlesPage && (
         <>
           <h2 className="header__header-text">What's going on in the world?</h2>
@@ -155,6 +155,16 @@ function Header({
           </div>
         </>
       )}
+
+      {/* Render MobileMenu */}
+      <MobileMenu
+        isOpen={isMobileMenuOpen}
+        closeMenu={() => setIsMobileMenuOpen(false)}
+        isLoggedIn={isLoggedIn}
+        currentUser={currentUser}
+        handleLogout={handleLogout}
+        setActiveModal={setActiveModal}
+      />
     </header>
   );
 }
