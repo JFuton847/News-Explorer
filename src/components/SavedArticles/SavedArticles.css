@@ -67,3 +67,21 @@
     margin: 16px 0 32px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .savedArticles__text-container {
+    padding-left: 16px;
+  }
+  .savedArticles__pageName-text {
+    font-size: 14px;
+    margin: 24px 0 0;
+  }
+  .savedArticles__header-text {
+    font-size: 30px;
+    line-height: 34px;
+    margin: 16px 0 0;
+  }
+  .savedArticles__keywords-text {
+    margin: 16px 0 32px;
+  }
+}

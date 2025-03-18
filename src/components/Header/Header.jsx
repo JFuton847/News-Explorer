@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom"; // Import Link
 import SearchForm from "../../components/SearchForm/SearchForm";
 import logoutButton from "../../assets/logout-button.png";
 import logoutButtonOther from "../../assets/logout-button-other.png";
@@ -58,23 +58,22 @@ function Header({
         </h1>
         {/* Standard nav links for larger screens */}
         <div className="nav__links">
-          <a
-            href="#"
+          <Link
+            to="/"
             className={`nav__link ${
               location.pathname === "/" ? "nav__link_active" : ""
             }`}
             style={{
               color: isSavedArticlesPage ? "#1a1b22" : "rgba(182, 188, 191, 1)",
             }}
-            onClick={() => navigate("/")}
           >
             Home
-          </a>
+          </Link>
 
           {isLoggedIn && (
             <>
-              <a
-                href="#"
+              <Link
+                to="/saved-articles"
                 className={`nav__link ${
                   location.pathname === "/saved-articles"
                     ? "nav__link_active"
@@ -89,10 +88,9 @@ function Header({
                       ? "2px solid #1a1b22"
                       : "2px solid transparent",
                 }}
-                onClick={() => navigate("/saved-articles")}
               >
                 Saved articles
-              </a>
+              </Link>
               <a
                 href="#"
                 className="nav__logout"

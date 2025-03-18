@@ -6,14 +6,16 @@
   width: 100%;
   height: 0;
   overflow: hidden;
-  background-color: #fff;
-  transition: height 0.3s ease;
-  z-index: 1000;
+  background-color: #000; /* Ensure background stays black */
+  transition: height 0.3s ease, transform 0.3s ease; /* Transition height and transform */
+  z-index: 1001; /* Ensure it's on top of the overlay */
+  transform: translateY(-100%); /* Initially hide the menu above the screen */
 }
 
-/* When open, set height to 230px */
+/* When open, set height to 230px and slide in */
 .mobile-menu.open {
   height: 230px;
+  transform: translateY(0);
 }
 
 /* Menu list styling */
@@ -35,10 +37,10 @@
 /* Overlay for the rest of the screen */
 .mobile-menu-overlay {
   position: fixed;
-  top: 230px; /* starts right below the open menu */
+  top: 0; /* Ensure the overlay covers the whole screen */
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 900;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  z-index: 1000; /* Place the overlay behind the menu */
 }

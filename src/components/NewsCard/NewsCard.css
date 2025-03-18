@@ -370,16 +370,17 @@
 
 @media screen and (max-width: 500px) {
   .newsCard {
-    display: block;
+    display: flex;
     flex-direction: column;
     /* grid-template-columns: repeat(1, 100%); */
     gap: 10px;
-    padding: 32px 0 0;
+    padding: 32px 0 16px;
     background-color: rgba(245, 246, 247, 1);
     width: 100%;
     margin: 0 auto;
     list-style-type: none;
     box-sizing: border-box;
+    height: auto;
   }
   .newsCard__search-results-header {
     padding: 32px 0 58px 16px;
@@ -387,12 +388,17 @@
     line-height: 34px;
   }
   .newsCard__card {
-    height: auto;
+    width: 90%;
+    max-width: none;
+  }
+  .newsCard__content {
     width: 90%;
     max-width: none;
   }
   .newsCard__card-article-text {
     width: 100%;
+    -webkit-line-clamp: 4;
+    margin-top: 0;
   }
 
   .newsCard__card-date-text {
@@ -407,10 +413,9 @@
   }
 
   .newsCard__card-source-text {
-    margin: 0;
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
+    position: static;
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
   .newsCard__card-delete-button {
     background-size: 18px 19px;
