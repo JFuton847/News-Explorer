@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import About from "../../components/About/About";
 import NotFoundImage from "../../assets/not-found.png";
+import Preloader from "../../components/Preloader/Preloader";
 
 function Main({
   articles,
@@ -14,14 +15,8 @@ function Main({
   isSearchSubmitted,
 }) {
   const [visibleCount, setVisibleCount] = useState(3);
-  // const [searchQuery, setSearchQuery] = useState("");
 
-  // useEffect(() => {
-  //   // Ensure search query and keywords are properly set
-  //   setSearchQuery(keywords);
-  // }, [keywords]);
-
-  if (loading) return <p>Loading articles...</p>;
+  if (loading) return <Preloader />;
 
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + 6);

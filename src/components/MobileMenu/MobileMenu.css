@@ -1,46 +1,59 @@
-/* Mobile menu container */
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 0;
-  overflow: hidden;
-  background-color: #000; /* Ensure background stays black */
-  transition: height 0.3s ease, transform 0.3s ease; /* Transition height and transform */
-  z-index: 1001; /* Ensure it's on top of the overlay */
-  transform: translateY(-100%); /* Initially hide the menu above the screen */
-}
+@media screen and (max-width: 620px) {
+  /* Mobile menu container */
+  .mobileMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background-color: #000; /* Ensure background stays black */
+    transition: height 0.3s ease, transform 0.3s ease; /* Transition height and transform */
+    z-index: 1001; /* Ensure it's on top of the overlay */
+    transform: translateY(-100%); /* Initially hide the menu above the screen */
+  }
 
-/* When open, set height to 230px and slide in */
-.mobile-menu.open {
-  height: 230px;
-  transform: translateY(0);
-}
+  /* When open, set height to 230px and slide in */
+  .mobileMenu.open {
+    height: 230px;
+    transform: translateY(0);
+  }
 
-/* Menu list styling */
-.mobile-menu-list {
-  list-style: none;
-  padding: 20px;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  /* Menu list styling */
+  .mobileMenu__list {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-.mobile-menu-item {
-  margin: 10px 0;
-  font-size: 18px;
-  cursor: pointer;
-}
+  .mobileMenu__item {
+    margin: 10px 0;
+    font-size: 18px;
+    cursor: pointer;
+  }
 
-/* Overlay for the rest of the screen */
-.mobile-menu-overlay {
-  position: fixed;
-  top: 0; /* Ensure the overlay covers the whole screen */
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-  z-index: 1000; /* Place the overlay behind the menu */
+  /* Overlay for the rest of the screen */
+  .mobileMenu__Overlay {
+    position: fixed;
+    top: 0; /* Ensure the overlay covers the whole screen */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 1000; /* Place the overlay behind the menu */
+  }
+  .mobileMenu__links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .mobileMenu__header {
+    border-bottom: 1px solid grey;
+    padding-bottom: 16px;
+    border-color: #c4c4c4;
+  }
 }

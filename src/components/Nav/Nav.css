@@ -126,7 +126,7 @@
     height: 48px;
     font-size: 16px;
   }
-  .nav__logout-image {
+  8 .nav__logout-image {
     width: 17.41px;
     height: 16px;
     margin-left: 17px;
@@ -135,5 +135,43 @@
 @media screen and (max-width: 620px) {
   .nav__links {
     display: none;
+  }
+  .nav__header-name {
+    padding-left: 16px;
+  }
+  .nav__link {
+    display: inline-block;
+    width: auto;
+    align-self: flex-start;
+    font-size: 18px;
+    line-height: 56px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0 0 0 16px;
+  }
+  .nav__link_active {
+    border-bottom: none;
+    font-size: 18px;
+    line-height: 56px;
+  }
+  .nav__login {
+    /* padding: 16px 110px; */
+    height: 56px;
+    margin-left: 16px;
+    margin-right: 16px;
+    display: flex;
+    font-size: 18px;
+    line-height: 24px;
+    width: 90%;
+  }
+  .nav__logout {
+    display: flex;
+    padding: 16px 16px;
+    height: 30px;
+    width: 288px;
+    font-size: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    justify-content: center;
   }
 }
