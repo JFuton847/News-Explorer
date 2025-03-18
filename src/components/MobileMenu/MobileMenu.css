@@ -1,6 +1,11 @@
+.mobileMenu {
+  display: none;
+}
+
 @media screen and (max-width: 620px) {
   /* Mobile menu container */
   .mobileMenu {
+    display: block;
     position: fixed;
     top: 0;
     right: 0;

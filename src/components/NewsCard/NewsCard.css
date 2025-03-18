@@ -303,6 +303,7 @@
     padding: 40px 0 2px 40px;
     font-size: 30px;
     line-height: 34px;
+    position: relative;
   }
   .newsCard__card {
     min-height: 420px;

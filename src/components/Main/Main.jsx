@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import About from "../../components/About/About";
 import NotFoundImage from "../../assets/not-found.png";
@@ -16,8 +16,6 @@ function Main({
 }) {
   const [visibleCount, setVisibleCount] = useState(3);
 
-  if (loading) return <Preloader />;
-
   const handleShowMore = () => {
     setVisibleCount((prevCount) => prevCount + 6);
   };
@@ -31,7 +29,11 @@ function Main({
       {isSearchSubmitted && searchQuery && (
         <h1 className="newsCard__search-results-header">Search results</h1>
       )}
-      {articles.length > 0 ? (
+      {loading ? (
+        <div className="newsCard__search-results">
+          <Preloader />
+        </div>
+      ) : articles.length > 0 ? (
         <>
           <ul className="newsCard">
             {articles.slice(0, visibleCount).map((article) => (
