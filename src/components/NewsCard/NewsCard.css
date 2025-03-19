@@ -278,7 +278,7 @@
   .newsCard {
     grid-template-columns: repeat(3, 30%);
     padding: 62px 104px 0;
-    max-width: 100%;
+    width: 100%;
     list-style-type: none;
     box-sizing: border-box;
   }

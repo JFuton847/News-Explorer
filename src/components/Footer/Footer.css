@@ -15,6 +15,10 @@
   font-size: 16px;
   line-height: 22px;
   margin-left: 104px;
+  /* padding-top: 32px;
+  padding-bottom: 26px; */
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .footer__nav-container {
@@ -219,10 +223,13 @@
     width: 100%;
     order: 0;
     /* text-align: center; */
-    margin-top: 10px;
+    margin-top: 38px;
     padding-left: 12px;
     margin-left: 0;
+    margin-bottom: 22px;
     box-sizing: border-box;
+    padding-top: 0;
+    padding-bottom: 0;
   }
   .footer__home-button {
     line-height: 48px;

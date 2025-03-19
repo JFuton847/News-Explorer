@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ onClose, onLogin, isOpen, openRegisterModal }) => {
+const LoginModal = ({
+  onClose,
+  onLogin,
+  isOpen,
+  openRegisterModal,
+  loginError,
+  setLoginError,
+}) => {
   const [loginValues, setLoginValues] = useState({
     email: "",
     password: "",
@@ -15,9 +22,10 @@ const LoginModal = ({ onClose, onLogin, isOpen, openRegisterModal }) => {
         email: "",
         password: "",
       });
-      setErrors({ email: "", password: "" }); // Clear errors when modal closes
+      setErrors({ email: "", password: "" }); // Clear other errors when modal closes
+      setLoginError(""); // Clear login error message when modal closes
     }
-  }, [isOpen]);
+  }, [isOpen, setLoginError]);
 
   const [isFormValid, setIsFormValid] = useState(false);
 
@@ -103,6 +111,9 @@ const LoginModal = ({ onClose, onLogin, isOpen, openRegisterModal }) => {
           <p className="modal__error-message">{errors.password}</p>
         )}
       </label>
+
+      {/* Display the general login error if it exists */}
+      {loginError && <p className="modal__error-message">{loginError}</p>}
 
       <div className="modal__buttons-container">
         <button

@@ -22,6 +22,7 @@ function App() {
   const [isRegistrationComplete, setIsRegistrationComplete] = useState(false);
   const [keywords, setKeywords] = useState([]);
   const [isSearchSubmitted, setIsSearchSubmitted] = useState(false);
+  const [loginError, setLoginError] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -103,6 +104,7 @@ function App() {
       })
       .catch((error) => {
         console.error("Error during login:", error);
+        setLoginError("Please enter a valid email and password.");
       });
   };
 
@@ -176,6 +178,8 @@ function App() {
           onClose={closeActiveModal}
           onLogin={onLogin}
           openRegisterModal={openRegisterModal}
+          loginError={loginError}
+          setLoginError={setLoginError}
         />
         <RegisterModal
           isOpen={activeModal === "register"}
