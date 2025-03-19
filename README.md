@@ -1,11 +1,11 @@
 # NewsExplorer
 
-This is the third project of the Software Engineering program at TripleTen. It was created using HTML and CSS, based on the Figma design.
+This is the final project of the Software Engineering program at TripleTen. It was created using HTML CSS, Javascript, OOP, and React based on the Figma design.
 
 ## Links
 
-1. [GitHub Hosted Page] (https://jfuton847.github.io/se_project_aroundtheus/).
-2. [My GitHub Page] (https://github.com/JFuton847).
+1. [GitHub Hosted Page] ().
+2. [My GitHub Page] (https://github.com/JFuton847/News-Explorer).
 3. [Figma Design] (https://www.figma.com/design/3ottwMEhlBt95Dbn8dw1NH/Your-Final-Project?node-id=22618-1087&t=3JTVxQlLfYO6VBf4-0).
 
 ## Project features
