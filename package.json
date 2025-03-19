@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://jfuton847.github.io/News-Explorer/",
   "scripts": {
     "dev": "vite --open",
     "build": "vite build",
