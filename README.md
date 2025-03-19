@@ -4,7 +4,7 @@ This is the final project of the Software Engineering program at TripleTen. It w
 
 ## Links
 
-1. [GitHub Hosted Page] ().
+1. [GitHub Hosted Page] (https://jfuton847.github.io/News-Explorer/).
 2. [My GitHub Page] (https://github.com/JFuton847/News-Explorer).
 3. [Figma Design] (https://www.figma.com/design/3ottwMEhlBt95Dbn8dw1NH/Your-Final-Project?node-id=22618-1087&t=3JTVxQlLfYO6VBf4-0).
 
