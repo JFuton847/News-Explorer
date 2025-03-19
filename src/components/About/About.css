@@ -1,0 +1,113 @@
+.about {
+  padding: 80px 0;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.about__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 104px;
+  gap: 56px;
+}
+
+.about__image {
+  width: 464px;
+  height: 464px;
+  border-radius: 1000px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.about__title {
+  font-family: "Roboto-Slab", "Inter", sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.about__text {
+  font-family: "Roboto", "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #333;
+}
+
+@media screen and (max-width: 957px) {
+  .about__image {
+    width: 232px;
+    height: 232px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .about {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+  }
+  .about__container {
+    width: 80%;
+    margin-left: 40px;
+    gap: 32px;
+  }
+  .about__image {
+    width: 232px;
+    height: 232px;
+    border-radius: 1000px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .about__title {
+    font-family: "Roboto-Slab", "Inter", sans-serif;
+    font-size: 30px;
+    line-height: 40px;
+    margin-bottom: 5px;
+  }
+  .about__text {
+    font-family: "Roboto", "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #333;
+  }
+}
+
+@media screen and (max-width: 652px) and (min-width: 320px) {
+  .about {
+    padding: 0 16px 128px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .about__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    margin-left: 0;
+    width: 100%;
+  }
+  .about__title {
+    margin-top: 0;
+  }
+  .about__content {
+    justify-content: center;
+    text-align: center;
+  }
+  .about__image {
+    margin: 32px 24px 0;
+    width: 272px;
+    height: 272px;
+  }
+}
