@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import SearchForm from "../../components/SearchForm/SearchForm";
-import logoutButton from "../../assets/logout-button.png";
-import logoutButtonOther from "../../assets/logout-button-other.png";
+import logoutButton from "../../assets/logout-button.svg";
+import logoutButtonOther from "../../assets/logout-button-other.svg";
 import hamburgerIconBlack from "../../assets/hamburger-icon-black.svg";
 import hamburgerIconWhite from "../../assets/hamburger-icon-white.svg";
-import closeIconBlack from "../../assets/black-close.png";
-import closeIconWhite from "../../assets/close.png";
+import closeIconBlack from "../../assets/black-close.svg";
+import closeIconWhite from "../../assets/close.svg";
 import MobileMenu from "../../components/MobileMenu/MobileMenu";
 import "./Header.css";
 import "../Nav/Nav.css";

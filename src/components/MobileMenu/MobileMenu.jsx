@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import logoutButton from "../../assets/logout-button.png";
-import logoutButtonOther from "../../assets/logout-button-other.png";
+import logoutButton from "../../assets/logout-button.svg";
+import logoutButtonOther from "../../assets/logout-button-other.svg";
 import "./MobileMenu.css";
 
 function MobileMenu({

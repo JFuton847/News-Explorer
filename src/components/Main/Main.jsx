@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NewsCard from "../../components/NewsCard/NewsCard";
 import About from "../../components/About/About";
-import NotFoundImage from "../../assets/not-found.png";
+import NotFoundImage from "../../assets/not-found.svg";
 import Preloader from "../../components/Preloader/Preloader";
 
 function Main({
