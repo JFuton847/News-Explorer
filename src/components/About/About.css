@@ -9,7 +9,7 @@
   width: 100%;
   display: flex;
   align-items: center;
-  margin-left: 104px;
+  justify-content: center;
   gap: 56px;
 }
 
@@ -24,6 +24,7 @@
 .about__content {
   display: flex;
   flex-direction: column;
+  max-width: 600px;
 }
 
 .about__title {

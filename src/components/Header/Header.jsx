@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom"; // Import Link
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import logoutButton from "../../assets/logout-button.png";
 import logoutButtonOther from "../../assets/logout-button-other.png";
 import hamburgerIconBlack from "../../assets/hamburger-icon-black.svg";
 import hamburgerIconWhite from "../../assets/hamburger-icon-white.svg";
+import closeIconBlack from "../../assets/black-close.png";
+import closeIconWhite from "../../assets/close.png";
 import MobileMenu from "../../components/MobileMenu/MobileMenu";
 import "./Header.css";
 import "../Nav/Nav.css";
@@ -28,6 +30,15 @@ function Header({
   const logoutButtonImage = isSavedArticlesPage
     ? logoutButtonOther
     : logoutButton;
+
+  // Determine which icon to show based on the page and mobile menu state
+  const hamburgerIcon = isMobileMenuOpen
+    ? isSavedArticlesPage
+      ? closeIconBlack
+      : closeIconWhite
+    : isSavedArticlesPage
+    ? hamburgerIconBlack
+    : hamburgerIconWhite;
 
   return (
     <header
@@ -129,7 +140,7 @@ function Header({
 
         <div className="header__hamburger-container" onClick={toggleMobileMenu}>
           <img
-            src={isSavedArticlesPage ? hamburgerIconBlack : hamburgerIconWhite}
+            src={hamburgerIcon}
             alt="Menu"
             className={`hamburger-icon ${
               isSavedArticlesPage
@@ -162,6 +173,7 @@ function Header({
         currentUser={currentUser}
         handleLogout={handleLogout}
         setActiveModal={setActiveModal}
+        isSavedArticlesPage={isSavedArticlesPage}
       />
     </header>
   );
