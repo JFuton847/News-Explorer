@@ -25,16 +25,16 @@ function MobileMenu({
     <>
       {/* Overlay: when clicked, closes the menu */}
       {isOpen && (
-        <div className="mobileMenu__overlay" onClick={closeMenu}></div>
+        <div className="mobile-menu__overlay" onClick={closeMenu}></div>
       )}
       <div
-        className={`mobileMenu ${isOpen ? "open" : ""}`}
+        className={`mobile-menu ${isOpen ? "open" : ""}`}
         style={{
           backgroundColor: isSavedArticlesPage ? "#FFF" : "#1A1B22", // Change background based on page
         }}
       >
         {/* NewsExplorer header */}
-        <div className="mobileMenu__header">
+        <div className="mobile-menu__header">
           <h1
             className="nav__header-name"
             style={{
@@ -51,7 +51,7 @@ function MobileMenu({
         </div>
 
         {/* Navigation links */}
-        <div className="mobileMenu__links">
+        <div className="mobile-menu__links">
           <Link
             to="/"
             className={`nav__link ${

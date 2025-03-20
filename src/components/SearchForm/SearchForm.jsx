@@ -20,17 +20,17 @@ function SearchForm({ onSearch, onSearchSubmit }) {
   };
 
   return (
-    <div className="searchForm__search-container">
+    <div className="search-form__search-container">
       <input
         type="text"
         placeholder="Search..."
         value={query}
         onChange={handleChange}
         onKeyPress={handleKeyPress} // Listen for Enter key press
-        className="searchForm"
+        className="search-form"
       />
       <button
-        className="searchForm__search-button"
+        className="search-form__search-button"
         onClick={handleSearchClick} // Trigger search on button click
       >
         Search

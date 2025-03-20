@@ -1,10 +1,10 @@
-.mobileMenu {
+.mobile-menu {
   display: none;
 }
 
 @media screen and (max-width: 620px) {
   /* Mobile menu container */
-  .mobileMenu {
+  .mobile-menu {
     display: block;
     position: fixed;
     top: 0;
@@ -19,13 +19,13 @@
   }
 
   /* When open, set height to 230px and slide in */
-  .mobileMenu.open {
+  .mobile-menu.open {
     height: 230px;
     transform: translateY(0);
   }
 
   /* Menu list styling */
-  .mobileMenu__list {
+  .mobile-menu__list {
     list-style: none;
     padding: 20px;
     margin: 0;
@@ -34,14 +34,14 @@
     align-items: center;
   }
 
-  .mobileMenu__item {
+  .mobile-menu__item {
     margin: 10px 0;
     font-size: 18px;
     cursor: pointer;
   }
 
   /* Overlay for the rest of the screen */
-  .mobileMenu__Overlay {
+  .mobile-menu__Overlay {
     position: fixed;
     top: 0; /* Ensure the overlay covers the whole screen */
     left: 0;
@@ -50,13 +50,13 @@
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
     z-index: 1000; /* Place the overlay behind the menu */
   }
-  .mobileMenu__links {
+  .mobile-menu__links {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 16px;
   }
-  .mobileMenu__header {
+  .mobile-menu__header {
     border-bottom: 1px solid grey;
     padding-bottom: 16px;
     border-color: #c4c4c4;

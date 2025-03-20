@@ -73,15 +73,15 @@ function SavedArticles({ currentUser }) {
   };
 
   return (
-    <div className="savedArticles">
-      <div className="savedArticles__container">
-        <div className="savedArticles__text-container">
-          <h1 className="savedArticles__pageName-text">Saved articles</h1>
-          <h2 className="savedArticles__header-text">
+    <div className="saved-articles">
+      <div className="saved-articles__container">
+        <div className="saved-articles__text-container">
+          <h1 className="saved-articles__pageName-text">Saved articles</h1>
+          <h2 className="saved-articles__header-text">
             {currentUser?.name}, you have {savedArticles.length} saved articles
           </h2>
           {savedArticles.length > 0 && (
-            <p className="savedArticles__keywords-text">
+            <p className="saved-articles__keywords-text">
               By Keywords:{" "}
               <span
                 style={{
@@ -97,7 +97,7 @@ function SavedArticles({ currentUser }) {
           )}
         </div>
         {savedArticles.length > 0 ? (
-          <ul className="newsCard">
+          <ul className="news-card">
             {savedArticles.map((article) => (
               <NewsCard
                 key={article.url}
