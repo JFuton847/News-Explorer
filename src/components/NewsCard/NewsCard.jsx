@@ -87,11 +87,11 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
   };
 
   return (
-    <li className="newsCard__card" key={article.url} onClick={handleCardClick}>
+    <li className="news-card__card" key={article.url} onClick={handleCardClick}>
       {isSavedPage ? (
         <>
           <button
-            className="newsCard__card-delete-button"
+            className="news-card__card-delete-button"
             onClick={(e) => {
               e.stopPropagation();
               onDelete(article.url);
@@ -100,7 +100,7 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
             onMouseLeave={() => setShowTooltip(false)}
           ></button>
           {showTooltip && (
-            <div ref={tooltipRef} className="newsCard__card-tooltip">
+            <div ref={tooltipRef} className="news-card__card-tooltip">
               Remove from saved
             </div>
           )}
@@ -108,7 +108,7 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
       ) : (
         <>
           <button
-            className={`newsCard__card-save-button ${
+            className={`news-card__card-save-button ${
               isLoggedIn && savedArticles.has(article.url) ? "active" : ""
             }`}
             onClick={(e) => handleSaveClick(article, e)}
@@ -116,32 +116,32 @@ function NewsCard({ article, isSavedPage, onDelete, isLoggedIn, keywords }) {
             onMouseLeave={() => setShowTooltip(false)}
           ></button>
           {showTooltip && !isLoggedIn && (
-            <div ref={tooltipRef} className="newsCard__card-tooltip">
+            <div ref={tooltipRef} className="news-card__card-tooltip">
               Sign in to save articles
             </div>
           )}
         </>
       )}
-      <div className="newsCard__card-image-container">
+      <div className="news-card__card-image-container">
         <img
           src={article.imageUrl}
           alt="News Image"
-          className="newsCard__card-image"
+          className="news-card__card-image"
         />
       </div>
-      <div className="newsCard__content">
-        <p className="newsCard__card-date-text">
+      <div className="news-card__content">
+        <p className="news-card__card-date-text">
           {new Date(article.date).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}
         </p>
-        <h2 className="newsCard__card-title">{article.title}</h2>
-        <p className="newsCard__card-article-text">{article.description}</p>
-        <p className="newsCard__card-source-text">{article.source}</p>
+        <h2 className="news-card__card-title">{article.title}</h2>
+        <p className="news-card__card-article-text">{article.description}</p>
+        <p className="news-card__card-source-text">{article.source}</p>
         {isSavedPage && keywords.length > 0 && (
-          <div className="newsCard__card-keyword">
+          <div className="news-card__card-keyword">
             {keywords.map((keyword, index) => (
               <span key={index}>
                 {keyword}

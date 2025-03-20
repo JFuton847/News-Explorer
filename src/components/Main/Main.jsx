@@ -27,15 +27,15 @@ function Main({
   return (
     <main>
       {isSearchSubmitted && searchQuery && (
-        <h1 className="newsCard__search-results-header">Search results</h1>
+        <h1 className="news-card__search-results-header">Search results</h1>
       )}
       {loading ? (
-        <div className="newsCard__search-results">
+        <div className="news-card__search-results">
           <Preloader />
         </div>
       ) : articles.length > 0 ? (
         <>
-          <ul className="newsCard">
+          <ul className="news-card">
             {articles.slice(0, visibleCount).map((article) => (
               <NewsCard
                 key={article._id}
@@ -47,9 +47,9 @@ function Main({
             ))}
           </ul>
           {visibleCount < articles.length && (
-            <div className="newsCard__show-more-button-container">
+            <div className="news-card__show-more-button-container">
               <button
-                className="newsCard__show-more-button"
+                className="news-card__show-more-button"
                 onClick={handleShowMore}
               >
                 Show More
@@ -60,14 +60,14 @@ function Main({
       ) : (
         isSearchSubmitted &&
         searchQuery && (
-          <div className="newsCard__no-results">
+          <div className="news-card__no-results">
             <img
               src={NotFoundImage}
               alt="Article Not Found Image"
-              className="newsCard__not-found-image"
+              className="news-card__not-found-image"
             />
-            <p className="newsCard__no-results__top-message">Nothing found</p>
-            <p className="newsCard__no-results_bottom-message">
+            <p className="news-card__no-results__top-message">Nothing found</p>
+            <p className="news-card__no-results_bottom-message">
               Sorry, but nothing matched your search terms
             </p>
           </div>
